@@ -1,6 +1,9 @@
 # .env file
 .env
 
+# Backend
+src/backend/.env
+
 # Frontend
 src/frontend/.DS_Store
 src/frontend/node_modules
