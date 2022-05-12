@@ -14,9 +14,14 @@ from datetime import timedelta # JWT Authentication
 
 from pathlib import Path
 
+import environ # 環境変数
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# 環境変数設定
+env = environ.Env(DEBUG=(bool, False))
+env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -90,8 +95,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blog_data',
-        'USER': 'ginkurenai',
-        'PASSWORD': 'KogaAkito1215@ginkurenai',
+        'USER': env('DJANGO_MYSQL_USER'),
+        'PASSWORD': env('DJANGO_MYSQL_PASSWORD'),
         'HOST': 'db',
         'PORT': '3306',
     }
