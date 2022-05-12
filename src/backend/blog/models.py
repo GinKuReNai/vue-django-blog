@@ -25,7 +25,7 @@ class Post(models.Model):
     publish_date = models.DateTimeField('投稿日時', blank=True, null=True)
     published = models.BooleanField('公開日時', default=False)
     
-    author = models.ForeignKey(Profile, on_delete=models.PROTECT)
+    author = models.ForeignKey(Profile, related_name='posts', on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, blank=True)
     
     def __str__(self):
@@ -35,8 +35,8 @@ class Comment(models.Model):
     """コメント"""
     name = models.CharField('名前', max_length=255, default='名無し')
     text = models.TextField('本文')
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name='対象記事')
-    parent = models.ForeignKey('self', verbose_name='親コメント', null=True, blank=True, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE, verbose_name='対象記事')
+    parent = models.ForeignKey('self', related_name='replies', verbose_name='親コメント', null=True, blank=True, on_delete=models.CASCADE)
     created_at = models.DateTimeField('作成日', auto_now_add=True)
     
     def __str__(self):
