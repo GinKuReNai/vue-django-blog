@@ -7,7 +7,6 @@ services:
     build:
       context: ./docker/vue
       dockerfile: Dockerfile
-    restart: unless-stopped
     command: npm run serve
     networks:
      - django_net
@@ -44,7 +43,6 @@ services:
   db:
     container_name: MySQL
     image: mysql:latest
-    restart: unless-stopped
     networks:
       - django_net
     expose:
@@ -64,7 +62,6 @@ services:
   nginx:
     container_name: Nginx
     image: nginx:1.17
-    restart: unless-stopped
     networks:
       - django_net
     ports:
