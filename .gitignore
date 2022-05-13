@@ -1,5 +1,6 @@
-# .env file
+# Whole settings
 .env
+.devcontainer/devcontainer.json
 
 # Backend
 src/backend/.env

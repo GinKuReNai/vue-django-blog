@@ -7,6 +7,9 @@ class Tag(models.Model):
     """記事のタグ"""
     name = models.CharField('タグ', max_length=25, unique=True)
     
+    class Meta:
+        verbose_name_plural = 'tags'
+    
     def __str__(self):
         return self.name
 
@@ -26,7 +29,7 @@ class Post(models.Model):
     published = models.BooleanField('公開日時', default=False)
     
     author = models.ForeignKey(Profile, related_name='posts', on_delete=models.PROTECT)
-    tags = models.ManyToManyField(Tag, blank=True)
+    tags = models.ManyToManyField(Tag, related_name='tags', blank=True)
     
     def __str__(self):
         return self.title
