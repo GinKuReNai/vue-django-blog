@@ -14,8 +14,6 @@ services:
      - ./src/frontend:/code
      - ./static:/static
      - ./template:/template
-    ports:
-      - '8080:8080'
     expose:
      - "3000"
     tty: true
