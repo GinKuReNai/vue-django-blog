@@ -4,6 +4,9 @@ from blog.models import Tag, Post, Comment
 
 class TagSerializer(serializers.ModelSerializer):
     """Tag用シリアライザ"""
+    # ManyToMany関係のPost
+    posts = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+
     class Meta:
         model = Tag
         # 利用するモデルのフィールド

@@ -29,7 +29,7 @@ class Post(models.Model):
     published = models.BooleanField('公開日時', default=False)
     
     author = models.ForeignKey(Profile, related_name='posts', on_delete=models.PROTECT)
-    tags = models.ManyToManyField(Tag, related_name='tags', blank=True)
+    tags = models.ManyToManyField(Tag, related_name='posts', blank=True)
     
     def __str__(self):
         return self.title
