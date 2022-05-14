@@ -21,6 +21,7 @@ class ProfileDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     perimission_classes = [IsAuthenticatedOrReadOnly, IsOwner]
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    lookup_field = 'id'
 
 class ProfileCreateAPIView(generics.CreateAPIView):
     """Profile用登録API"""

@@ -21,6 +21,7 @@ class UserDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     perimission_classes = [IsAuthenticatedOrReadOnly, IsOwner]
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    lookup_field = 'id'
 
 class UserCreateAPIView(generics.CreateAPIView):
     """User用登録API"""
