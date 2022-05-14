@@ -1,6 +1,5 @@
 from rest_framework import generics
 from rest_framework.permissions import (
-    AllowAny,
     IsAuthenticated,
     IsAuthenticatedOrReadOnly,
 )
@@ -25,6 +24,6 @@ class ProfileDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 
 class ProfileCreateAPIView(generics.CreateAPIView):
     """Profile用登録API"""
-    # 誰でも利用可
-    perimission_classes = [AllowAny,]
+    # 認証(Login)ユーザーのみ利用可
+    perimission_classes = [IsAuthenticated,]
     serializer_class = ProfileSerializer
