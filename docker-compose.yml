@@ -63,7 +63,7 @@ services:
     networks:
       - django_net
     ports:
-      - '1234:1234'
+      - '8080:80'
     volumes:
       - ./docker/nginx/conf:/etc/nginx/conf.d
       - ./docker/nginx/uwsgi_params:/etc/nginx/usgi_params
