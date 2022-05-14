@@ -29,6 +29,7 @@ class Post(models.Model):
     slug = models.SlugField('識別番号', max_length=255, unique=True)
     body = models.TextField('本文')
     meta_description = models.CharField('メタ情報', max_length=150, blank=True)
+    image = models.ImageField(upload_to='media/posts', blank=True, null=True)
     date_created = models.DateTimeField('作成日時', auto_now_add=True)
     date_modified = models.DateTimeField('修正日時', auto_now=True)
     publish_date = models.DateTimeField('投稿日時', blank=True, null=True)
@@ -39,6 +40,14 @@ class Post(models.Model):
     
     def __str__(self):
         return self.title
+    
+    @staticmethod
+    def get_absolute_url(self):
+        """URLの設定"""
+        try:
+            return reverse('posts_api', kwargs={'slug': self.slug})
+        except:
+            None
 
 def create_slug(instance, new_slug=None):
     """slugの自動生成"""
