@@ -2,7 +2,7 @@ from django.shotcuts import get_object_or_404
 from blog.models import Post
 
 class MultipleFieldLookupMixin(object):
-    """slug, idによってCommentをフィルタリングするMixin"""
+    """slug, idによってCommentをフィルタリング"""
     
     def get_object(self):
         queryset = self.get_queryset()

@@ -26,7 +26,7 @@ class Post(models.Model):
     
     title = models.CharField('タイトル', max_length=255, unique=True)
     subtitle = models.CharField('サブタイトル', max_length=255, blank=True)
-    slug = models.SlugField('識別番号', max_length=255, unique=True)
+    slug = models.SlugField('識別番号', unique=True)
     body = models.TextField('本文')
     meta_description = models.CharField('メタ情報', max_length=150, blank=True)
     image = models.ImageField(upload_to='media/posts', blank=True, null=True)
@@ -41,8 +41,7 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
-    @staticmethod
-    def get_absolute_url(self):
+    def get_api_url(self):
         """URLの設定"""
         try:
             return reverse('posts_api', kwargs={'slug': self.slug})
