@@ -26,7 +26,6 @@ services:
     build:
       context: ./docker/python
       dockerfile: Dockerfile
-    command: uwsgi --socket :8001 --module app.wsgi --py-autoreload 1 --logto /tmp/uwsgi.log
     networks:
       - django_net
     volumes:
@@ -34,6 +33,7 @@ services:
       - ./static:/static
     expose:
       - "8001"
+    tty: true
     depends_on:
       - db
  

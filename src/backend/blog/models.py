@@ -1,4 +1,5 @@
 import uuid
+from django.utils import timezone
 from django.db import models
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
@@ -13,19 +14,24 @@ class Tag(models.Model):
     """記事のタグ"""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField('タグ', max_length=25, unique=True)
-    created_at = models.DateTimeField('作成日', auto_now_add=True)
+    created_at = models.DateTimeField('作成日')
     
     class Meta:
         verbose_name_plural = 'tags'
     
     def __str__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.created_at = timezone.now()
+        return super(Tag, self).save(*args, **kwargs)
 
 class Post(models.Model):
     """記事"""
     class Meta:
         # 投稿日時で降順に並べる
-        ordering = ['-publish_date',]
+        ordering = ['-created_at', '-updated_at']
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField('タイトル', max_length=255, unique=True)
@@ -34,10 +40,8 @@ class Post(models.Model):
     body = models.TextField('本文')
     meta_description = models.CharField('メタ情報', max_length=150, blank=True)
     image = models.ImageField(upload_to='media/posts', blank=True, null=True)
-    date_created = models.DateTimeField('作成日時', auto_now_add=True)
-    date_modified = models.DateTimeField('修正日時', auto_now=True)
-    publish_date = models.DateTimeField('投稿日時', blank=True, null=True)
-    published = models.BooleanField('公開日時', default=False)
+    created_at = models.DateTimeField('作成日時')
+    updated_at = models.DateTimeField('修正日時')
     
     author = models.ForeignKey(User, related_name='posts', on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, related_name='posts', blank=True)
@@ -51,6 +55,12 @@ class Post(models.Model):
             return reverse('posts_api', kwargs={'slug': self.slug})
         except:
             None
+    
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.created_at = timezone.now()
+        self.updated_at = timezone.now()
+        return super(Tag, self).save(*args, **kwargs)
 
 def create_slug(instance, new_slug=None):
     """slugの自動生成"""
@@ -85,8 +95,15 @@ class Comment(models.Model):
     text = models.TextField('本文')
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE, verbose_name='対象記事')
     parent = models.ForeignKey('self', related_name='replies', verbose_name='親コメント', null=True, blank=True, on_delete=models.CASCADE)
-    created_at = models.DateTimeField('作成日', auto_now_add=True)
-    updated_at = models.DateTimeField('修正日', auto_now_add=True)
+    created_at = models.DateTimeField('作成日')
+    updated_at = models.DateTimeField('修正日')
     
     def __str__(self):
         return self.text[:20]
+    
+    def save(self, *args, **kwargs):
+       if not self.id:
+           self.created_at = timezone.now()
+       self.updated_at = timezone.now()
+       return super(Tag, self).save(*args, **kwargs)
+
