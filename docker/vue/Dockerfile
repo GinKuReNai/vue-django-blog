@@ -1,6 +1,14 @@
 FROM node:lts
 
-RUN mkdir code
 WORKDIR /code
-RUN npm install -g @vue/cli
-ADD . /code/
+COPY ./package*.json ./
+
+RUN npm install && \
+    npm install -g npm && \
+    npm install -g @vue/cli @vue/cli-service-global
+
+COPY . .
+EXPOSE 3000
+
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]

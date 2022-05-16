@@ -7,7 +7,6 @@ services:
     build:
       context: ./docker/vue
       dockerfile: Dockerfile
-    command: npm run serve
     networks:
      - django_net
     volumes:
