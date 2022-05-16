@@ -4,7 +4,7 @@ from rest_framework.permissions import (
     IsAuthenticated,
     IsAuthenticatedOrReadOnly,
 )
-from api.serializers.blog import TagSerializer
+from api.serializers.tag import TagSerializer
 from blog.models import Tag
 from api.permissions import IsOwner, IsOwnerOrReadOnly
 
@@ -26,6 +26,5 @@ class TagDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 class TagCreateAPIView(generics.CreateAPIView):
     """Tag用登録API"""
     # 認証(Login)ユーザー / 本人のみ利用可
-    # 誰でも利用可
     perimission_classes = [IsAuthenticatedOrReadOnly,]
     serializer_class = TagSerializer

@@ -5,7 +5,10 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 )
 from django.shotcuts import get_object_or_404
-from api.serializers.blog import CommentSerializer
+from api.serializers.comment import (
+    CommentSerializer,
+    CommentCreateSerializer,
+)
 from blog.models import Comment
 from api.permissions import IsOwner, IsOwnerOrReadOnly
 from api.mixin import MultipleFieldLookupMixin
@@ -41,7 +44,7 @@ class CommentCreateAPIView(views.APIView):
     """Comment用登録API"""
     # 認証(Login)ユーザーのみ利用可
     perimission_classes = [IsAuthenticated,]
-    serializer_class = CommentSerializer
+    serializer_class = CommentCreateSerializer
 
     def post(self, request, *args, **kwargs):
         """登録時処理（Userをauthor, Postをpostとして登録）"""
