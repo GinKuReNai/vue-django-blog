@@ -3,7 +3,7 @@ FROM node:lts
 WORKDIR /code
 COPY ./package*.json ./
 
-RUN npm install && \
+RUN npm ci && \
     npm install -g npm && \
     npm install -g @vue/cli @vue/cli-service-global
 
