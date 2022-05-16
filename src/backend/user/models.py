@@ -82,6 +82,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class Profile(models.Model):
     """プロフィール"""
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # ユーザー情報
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,

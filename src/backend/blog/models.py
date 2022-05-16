@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
@@ -10,7 +11,9 @@ User = get_user_model()
 
 class Tag(models.Model):
     """記事のタグ"""
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField('タグ', max_length=25, unique=True)
+    created_at = models.DateTimeField('作成日', auto_now_add=True)
     
     class Meta:
         verbose_name_plural = 'tags'
@@ -24,6 +27,7 @@ class Post(models.Model):
         # 投稿日時で降順に並べる
         ordering = ['-publish_date',]
     
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField('タイトル', max_length=255, unique=True)
     subtitle = models.CharField('サブタイトル', max_length=255, blank=True)
     slug = models.SlugField('識別番号', unique=True)
@@ -76,6 +80,7 @@ class Comment(models.Model):
         # 作成日、修正日で降順に並べる
         ordering = ['-created_at', '-updated_at']
         
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField('名前', max_length=255, default='名無し')
     text = models.TextField('本文')
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE, verbose_name='対象記事')
