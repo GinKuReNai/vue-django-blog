@@ -65,7 +65,7 @@ class PostListSerializer(serializers.ModelSerializer):
 class PostDetailSerializer(serializers.ModelSerializer):
     """詳細取得時シリアライザ"""
     slug = serializers.SerializerMethodField(read_only=True)
-    author = serializer.PrimaryKeyRelatedField(read_only=True)
+    author = serializers.PrimaryKeyRelatedField(read_only=True)
     comments = serializers.SerializerMethodField(read_only=True)
     
     class Meta:

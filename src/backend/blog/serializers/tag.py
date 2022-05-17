@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from user.models import Tag
+from blog.models import Tag
 
 class TagSerializer(serializers.ModelSerializer):
     """Profile用シリアライザ"""
     class Meta:
-        model = Profile
+        model = Tag
         # 利用するモデルのフィールド
         fields = ['name']

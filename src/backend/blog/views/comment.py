@@ -4,7 +4,7 @@ from rest_framework.permissions import (
     IsAuthenticated,
     IsAuthenticatedOrReadOnly,
 )
-from django.shotcuts import get_object_or_404
+from django.shortcuts import get_object_or_404
 from blog.serializers.comment import (
     CommentSerializer,
     CommentCreateSerializer,
@@ -27,7 +27,7 @@ class CommentListAPIView(views.APIView):
     
 class CommentDetailAPIView(
     MultipleFieldLookupMixin,
-    RetrieveUpdateDestroyAPIView
+    generics.RetrieveUpdateDestroyAPIView
 ):
     """
     Comment用詳細取得・更新・削除API
