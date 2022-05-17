@@ -8,8 +8,6 @@ from django.utils.text import slugify
 
 User = get_user_model()
 
-# Create your models here.
-
 class Tag(models.Model):
     """記事のタグ"""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -23,6 +21,7 @@ class Tag(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
+        """作成日の保存"""
         if not self.id:
             self.created_at = timezone.now()
         return super(Tag, self).save(*args, **kwargs)
@@ -57,6 +56,7 @@ class Post(models.Model):
             None
     
     def save(self, *args, **kwargs):
+        """作成日時及び修正日時の保存"""
         if not self.id:
             self.created_at = timezone.now()
         self.updated_at = timezone.now()
@@ -102,8 +102,8 @@ class Comment(models.Model):
         return self.text[:20]
     
     def save(self, *args, **kwargs):
+       """作成日及び修正日の保存"""
        if not self.id:
            self.created_at = timezone.now()
        self.updated_at = timezone.now()
        return super(Tag, self).save(*args, **kwargs)
-
