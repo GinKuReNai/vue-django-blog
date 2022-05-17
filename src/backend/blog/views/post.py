@@ -4,14 +4,14 @@ from rest_framework.permissions import (
     IsAuthenticated,
     IsAuthenticatedOrReadOnly,
 )
-from api.serializers.post import (
+from blog.serializers.post import (
     PostCreateUpdateSerializer,
     PostDetailSerializer,
     PostListSerializer,
 )
 from blog.models import Post
-from api.permissions import IsOwner, IsOwnerOrReadOnly
-from api.pagination import PostLimitOffsetPagination
+from blog.components.permissions import IsOwner, IsOwnerOrReadOnly
+from blog.components.pagination import PostLimitOffsetPagination
 
 class PostListAPIView(generics.ListAPIView):
     """Post用取得（一覧）API"""

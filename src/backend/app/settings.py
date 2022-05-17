@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'djoser',   # Djoser
 
     # My applications
-    'api.apps.ApiConfig',
     'blog.apps.BlogConfig',
 ]
 

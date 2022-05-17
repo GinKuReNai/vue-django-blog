@@ -4,9 +4,9 @@ from rest_framework.permissions import (
     IsAuthenticated,
     IsAuthenticatedOrReadOnly,
 )
-from api.serializers.tag import TagSerializer
+from blog.serializers.tag import TagSerializer
 from blog.models import Tag
-from api.permissions import IsOwner, IsOwnerOrReadOnly
+from blog.components.permissions import IsOwner, IsOwnerOrReadOnly
 
 class TagListAPIView(generics.ListAPIView):
     """Tag用取得（一覧）API"""

@@ -5,13 +5,13 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 )
 from django.shotcuts import get_object_or_404
-from api.serializers.comment import (
+from blog.serializers.comment import (
     CommentSerializer,
     CommentCreateSerializer,
 )
 from blog.models import Comment
-from api.permissions import IsOwner, IsOwnerOrReadOnly
-from api.mixin import MultipleFieldLookupMixin
+from blog.components.permissions import IsOwner, IsOwnerOrReadOnly
+from blog.components.mixin import MultipleFieldLookupMixin
 
 class CommentListAPIView(views.APIView):
     """Comment用取得（一覧）API"""

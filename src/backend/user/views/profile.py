@@ -5,7 +5,7 @@ from rest_framework.permissions import (
 )
 from user.serializers.profile import ProfileSerializer
 from user.models import Profile
-from api.permissions import IsOwner
+from blog.components.permissions import IsOwner
 
 class ProfileListAPIView(generics.ListAPIView):
     """Profile用取得（一覧）API"""

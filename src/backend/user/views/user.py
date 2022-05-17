@@ -6,7 +6,7 @@ from rest_framework.permissions import (
 )
 from user.serializers.user import UserSerializer
 from user.models import User
-from api.permissions import IsOwner
+from blog.components.permissions import IsOwner
 
 class UserListAPIView(generics.ListAPIView):
     """User用取得（一覧）API"""
