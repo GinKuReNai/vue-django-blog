@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from user.models import Tag
 
-class ProfileSerializer(serializers.ModelSerializer):
+class TagSerializer(serializers.ModelSerializer):
     """Profile用シリアライザ"""
     class Meta:
         model = Profile
