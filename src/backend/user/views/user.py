@@ -4,7 +4,7 @@ from rest_framework.permissions import (
     IsAuthenticated,
     IsAuthenticatedOrReadOnly,
 )
-from api.serializers.user import UserSerializer
+from user.serializers.user import UserSerializer
 from user.models import User
 from api.permissions import IsOwner
 
