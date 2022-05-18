@@ -4,13 +4,14 @@ from rest_framework.permissions import (
     IsAuthenticated,
     IsAuthenticatedOrReadOnly,
 )
+from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from blog.serializers.comment import (
     CommentSerializer,
-    CommentCreateSerializer,
+    CommentCreateUpdateSerializer,
 )
-from blog.models import Comment
-from blog.components.permissions import IsOwner, IsOwnerOrReadOnly
+from blog.models import Post, Comment
+from blog.components.permissions import IsOwnerOrReadOnly
 from blog.components.mixin import MultipleFieldLookupMixin
 
 class CommentListAPIView(views.APIView):
@@ -40,18 +41,19 @@ class CommentDetailAPIView(
     serializer_class = CommentSerializer
     lookup_fields = ['post', 'id']
 
-class CommentCreateAPIView(views.APIView):
+class CommentCreateUpdateAPIView(views.APIView):
     """Comment用登録API"""
     # 認証(Login)ユーザーのみ利用可
     perimission_classes = [IsAuthenticated,]
-    serializer_class = CommentCreateSerializer
+    serializer_class = CommentCreateUpdateSerializer
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, slug, *args, **kwargs):
         """登録時処理（Userをauthor, Postをpostとして登録）"""
         post = get_object_or_404(Post, slug=slug)
-        serializer = CommentSerializer(data=request.data)
+        serializer = CommentCreateUpdateSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save(author=request.user, post=post)
+            # serializer.save(author=request.user, post=post)
+            serializer.save(post=post)
             return Response(serializer.data, status=200)
         else:
             return Response({'errors': serializer.errors}, status=400)
