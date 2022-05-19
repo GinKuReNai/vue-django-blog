@@ -7,6 +7,7 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = [
             'id',
+            'name',
             'text',
             'post',
             'parent',
@@ -14,10 +15,8 @@ class CommentSerializer(serializers.ModelSerializer):
             'updated_at',
         ]
 
-class CommentCreateSerializer(serializers.ModelSerializer):
+class CommentCreateUpdateSerializer(serializers.ModelSerializer):
     """作成時シリアライザ"""
     class Meta:
         model = Comment
-        fields = [
-            'text'
-        ]
+        fields = ['name', 'text']

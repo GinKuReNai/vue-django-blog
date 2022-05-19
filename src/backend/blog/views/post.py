@@ -1,5 +1,6 @@
 from rest_framework import generics
 from rest_framework import views
+from rest_framework.response import Response
 from rest_framework.permissions import (
     IsAuthenticated,
     IsAuthenticatedOrReadOnly,
@@ -10,7 +11,7 @@ from blog.serializers.post import (
     PostListSerializer,
 )
 from blog.models import Post
-from blog.components.permissions import IsOwner, IsOwnerOrReadOnly
+from blog.components.permissions import IsOwnerOrReadOnly
 from blog.components.pagination import PostLimitOffsetPagination
 
 class PostListAPIView(generics.ListAPIView):
@@ -39,9 +40,10 @@ class PostCreateAPIView(views.APIView):
 
     def post(self, request, *args, **kwargs):
         """登録時処理（userをauthorとして登録）"""
-        serializer = PostSerializer(data=request.data)
+        serializer = PostCreateUpdateSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save(author=request.user)
+            # serializer.save(author=request.user)
+            serializer.save()
             return Response(serializer.data, status=200)
         else:
             return Response({'errors': serializer.errors}, status=404)

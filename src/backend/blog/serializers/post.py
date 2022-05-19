@@ -1,9 +1,14 @@
 from rest_framework import serializers
 
-from blog.models import Post, Comment
+from blog.models import Tag, Post, Comment
+from blog.serializers.tag import TagPrimaryKeyRelatedSerializer
+from blog.serializers.comment import CommentSerializer
+
 
 class PostCreateUpdateSerializer(serializers.ModelSerializer):
     """作成・更新時シリアライザ"""
+    tags = TagPrimaryKeyRelatedSerializer(many=True, queryset=Tag.objects.all())
+
     class Meta:
         model = Post
         # 利用するモデルのフィールド
@@ -11,6 +16,7 @@ class PostCreateUpdateSerializer(serializers.ModelSerializer):
             'title',
             'subtitle',
             'body',
+            'author',
             'meta_description',
             'image',
             'tags',
@@ -77,10 +83,8 @@ class PostDetailSerializer(serializers.ModelSerializer):
             'body',
             'meta_description',
             'image',
-            'date_created',
-            'date_modified',
-            'publish_date',
-            'published',
+            'created_at',
+            'updated_at',
             'author',
             'tags',
             'comments',
@@ -98,4 +102,3 @@ class PostDetailSerializer(serializers.ModelSerializer):
         except Exception as e:
             print(e)
         return serializer.data
-
