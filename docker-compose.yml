@@ -13,8 +13,8 @@ services:
      - ./src/frontend:/code
      - ./static:/static
      - ./template:/template
-    expose:
-     - "3000"
+    ports:
+     - "8080:3000"
     tty: true
     depends_on:
      - backend
@@ -62,7 +62,7 @@ services:
     networks:
       - django_net
     ports:
-      - '8080:80'
+      - '80:80'
     volumes:
       - ./docker/nginx/conf:/etc/nginx/conf.d
       - ./docker/nginx/uwsgi_params:/etc/nginx/usgi_params

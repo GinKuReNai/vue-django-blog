@@ -1,14 +1,9 @@
 FROM node:lts
 
-WORKDIR /code
-COPY ./package*.json ./
+WORKDIR /code/
 
-RUN npm ci && \
+RUN apt-get update && \
     npm install -g npm && \
-    npm install -g @vue/cli @vue/cli-service-global
-
-COPY . .
-EXPOSE 3000
-
-COPY docker-entrypoint.sh /
-ENTRYPOINT ["/docker-entrypoint.sh"]
+    npm install -g create-vite@latest
+    
+CMD ["npm", "run", "dev"]
