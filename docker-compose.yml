@@ -14,7 +14,7 @@ services:
      - ./static:/static
      - ./template:/template
     ports:
-     - "8080:3000"
+     - "3000:3000"
     tty: true
     depends_on:
      - backend
