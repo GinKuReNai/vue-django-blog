@@ -11,7 +11,7 @@ import GlobalFooter from "./components/GlobalFooter.vue";
   </div>
 </template>
 
-<style>
+<style lang="scss">
 /* Reset CSS */
 @import "./assets/styles/_reset.scss";
 
@@ -22,5 +22,10 @@ import GlobalFooter from "./components/GlobalFooter.vue";
   text-align: center;
   color: #2c3e50;
   margin-top: 0px;
+
+  GlobalFooter {
+    position: absolute;
+    bottom: 0;
+  }
 }
 </style>

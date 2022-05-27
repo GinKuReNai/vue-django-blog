@@ -17,10 +17,34 @@
     <nav :class="{ nav: !isActive, 'nav panelactive': isActive }">
       <!-- メニューリスト -->
       <ul class="nav__wrapper">
-        <li class="nav__item"><a href="#">Home</a></li>
-        <li class="nav__item"><a href="#">Articles</a></li>
-        <li class="nav__item"><a href="#">RSS</a></li>
-        <li class="nav__item"><a href="#">About</a></li>
+        <li class="nav__item">
+          <a href="#"
+            ><font-awesome-icon :icon="{ prefix: 'fas', iconName: 'house' }" />
+            Home</a
+          >
+        </li>
+        <li class="nav__item">
+          <a href="#"
+            ><font-awesome-icon
+              :icon="{ prefix: 'fas', iconName: 'newspaper' }"
+            />
+            Articles</a
+          >
+        </li>
+        <li class="nav__item">
+          <a href="#"
+            ><font-awesome-icon :icon="{ prefix: 'fas', iconName: 'rss' }" />
+            RSS</a
+          >
+        </li>
+        <li class="nav__item">
+          <a href="#"
+            ><font-awesome-icon
+              :icon="{ prefix: 'fas', iconName: 'circle-info' }"
+            />
+            About</a
+          >
+        </li>
       </ul>
     </nav>
   </header>
@@ -73,6 +97,10 @@ export default {
         text-align: center;
         font-weight: bold;
         padding: 20px;
+
+        font-awesome-icon {
+          margin: 10px;
+        }
       }
     }
 
