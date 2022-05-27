@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <div class="footer-icons">
-      <h1 class="title">title</h1>
+      <h1 class="title"><a href="#">Title</a></h1>
       <ul class="menu">
         <li>
           <a href="#"
@@ -46,6 +46,11 @@ export default {};
 
       .title {
         font-size: 16px;
+
+        a {
+          color: $buttonTextColor;
+          text-decoration: none;
+        }
       }
       .menu {
         display: flex;
@@ -58,7 +63,7 @@ export default {};
           a {
             color: $buttonTextColor;
             transition: all 0.3s ease-in-out;
-
+            // タブレット以上でホバーを有効
             @include responsive(md) {
               &:hover {
                 color: $buttonColor;

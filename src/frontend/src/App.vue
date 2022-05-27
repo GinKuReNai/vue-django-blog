@@ -14,9 +14,11 @@ import GlobalFooter from "./components/GlobalFooter.vue";
 <style lang="scss">
 /* Reset CSS */
 @import "./assets/styles/_reset.scss";
+// Google Fonts
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Ubuntu&display=swap");
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Ubuntu", "Noto Sans JP", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
