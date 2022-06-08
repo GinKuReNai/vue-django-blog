@@ -21,6 +21,17 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
+class Category(models.Model):
+    """記事のカテゴリー"""
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField('カテゴリー', max_length=25, unique=True)
+    created_at = models.DateTimeField('作成日', auto_now_add=True)
+    
+    class Meta:
+        verbose_name_plural = 'categories'
+    
+    def __str__(self):
+        return self.name
 
 class Post(models.Model):
     """記事"""
@@ -40,6 +51,7 @@ class Post(models.Model):
     
     author = models.ForeignKey(User, related_name='posts', on_delete=models.PROTECT)
     tags = models.ManyToManyField(Tag, blank=True)
+    category = models.ForeignKey(Category, verbose_name='カテゴリー', related_name='category', on_delete=models.PROTECT, null=True, blank=True)
     
     def __str__(self):
         return self.title

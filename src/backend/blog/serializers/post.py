@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from blog.models import Tag, Post, Comment
+from blog.models import Tag, Post, Comment, Category
 from blog.serializers.tag import TagPrimaryKeyRelatedSerializer
 from blog.serializers.comment import CommentSerializer
 
@@ -8,6 +8,7 @@ from blog.serializers.comment import CommentSerializer
 class PostCreateUpdateSerializer(serializers.ModelSerializer):
     """作成・更新時シリアライザ"""
     tags = TagPrimaryKeyRelatedSerializer(many=True, queryset=Tag.objects.all())
+    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
 
     class Meta:
         model = Post
@@ -20,6 +21,7 @@ class PostCreateUpdateSerializer(serializers.ModelSerializer):
             'meta_description',
             'image',
             'tags',
+            'category',
         ]
     
     def validate_title(self, value):
@@ -56,6 +58,7 @@ class PostListSerializer(serializers.ModelSerializer):
             'tags',
             'comments',
             'url',
+            'category',
         ]
     
     def get_comments(self, obj):
@@ -88,6 +91,7 @@ class PostDetailSerializer(serializers.ModelSerializer):
             'author',
             'tags',
             'comments',
+            'category',
         ]
         
     def get_slug(self, obj):
