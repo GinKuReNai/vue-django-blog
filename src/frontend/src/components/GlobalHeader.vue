@@ -26,14 +26,14 @@
         </li>
         <!-- Categories -->
         <li class="nav__item">
-          <router-link to="/articles/"
+          <router-link to="#"
             ><font-awesome-icon :icon="{ prefix: 'fas', iconName: 'folder' }" />
             Categories</router-link
           >
         </li>
         <!-- Tags -->
         <li class="nav__item">
-          <router-link to="/articles/"
+          <router-link to="#"
             ><font-awesome-icon :icon="{ prefix: 'fas', iconName: 'tags' }" />
             Tags</router-link
           >

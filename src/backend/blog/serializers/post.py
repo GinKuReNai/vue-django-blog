@@ -14,6 +14,7 @@ class PostCreateUpdateSerializer(serializers.ModelSerializer):
         model = Post
         # 利用するモデルのフィールド
         fields = [
+            'id',
             'title',
             'subtitle',
             'body',
@@ -50,6 +51,7 @@ class PostListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = [
+            'id',
             'title',
             'subtitle',
             'image',
@@ -80,6 +82,7 @@ class PostDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = [
+            'id',
             'title',
             'subtitle',
             'slug',

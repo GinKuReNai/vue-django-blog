@@ -36,7 +36,7 @@ SECRET_KEY = 'django-insecure-(ba04=2o(tv(+cd$6keh8*s(!5#3vn%x2sl6a3c*$gzmmc_z)g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -151,7 +151,7 @@ STATIC_ROOT = '/static/'
 STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
 
 # Media files
-MEDIA_URL = 'api/media/'    # URL参照で基点となるアドレス
+MEDIA_URL = '/api/media/'    # URL参照で基点となるアドレス
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    # 保存先の基点となるパス
 
 # Default primary key field type

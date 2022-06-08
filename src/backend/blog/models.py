@@ -42,10 +42,10 @@ class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField('タイトル', max_length=255, unique=True)
     subtitle = models.CharField('サブタイトル', max_length=255, blank=True)
-    slug = models.SlugField('識別番号', unique=True)
+    slug = models.SlugField('slug', unique=True)
     body = models.TextField('本文')
     meta_description = models.CharField('メタ情報', max_length=150, blank=True)
-    image = models.ImageField(upload_to='media/posts', blank=True, null=True)
+    image = models.ImageField(upload_to='posts', blank=True, null=True)
     created_at = models.DateTimeField('作成日時', auto_now_add=True)
     updated_at = models.DateTimeField('修正日時', auto_now=True)
     

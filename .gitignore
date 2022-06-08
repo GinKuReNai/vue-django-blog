@@ -4,6 +4,7 @@
 
 # Backend
 src/backend/.env
+src/backend/media/*
 
 # Frontend
 # Logs
