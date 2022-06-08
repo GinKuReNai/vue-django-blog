@@ -7,14 +7,14 @@
           <a href="#"
             ><font-awesome-icon
               :icon="{ prefix: 'fab', iconName: 'github' }"
-              size="xl"
+              size="2x"
           /></a>
         </li>
         <li>
           <a href="#"
             ><font-awesome-icon
               :icon="{ prefix: 'fab', iconName: 'twitter' }"
-              size="xl"
+              size="2x"
           /></a>
         </li>
       </ul>
