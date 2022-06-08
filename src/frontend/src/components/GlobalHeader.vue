@@ -17,12 +17,14 @@
     <nav :class="{ nav: !isActive, 'nav panelactive': isActive }">
       <!-- メニューリスト -->
       <ul class="nav__wrapper">
+        <!-- Home -->
         <li class="nav__item">
           <router-link to="/"
             ><font-awesome-icon :icon="{ prefix: 'fas', iconName: 'house' }" />
             Home</router-link
           >
         </li>
+        <!-- Articles -->
         <li class="nav__item">
           <router-link to="/articles/"
             ><font-awesome-icon
@@ -31,12 +33,28 @@
             Articles</router-link
           >
         </li>
+        <!-- Categories -->
+        <li class="nav__item">
+          <router-link to="/articles/"
+            ><font-awesome-icon :icon="{ prefix: 'fas', iconName: 'folder' }" />
+            Categories</router-link
+          >
+        </li>
+        <!-- Tags -->
+        <li class="nav__item">
+          <router-link to="/articles/"
+            ><font-awesome-icon :icon="{ prefix: 'fas', iconName: 'tags' }" />
+            Tags</router-link
+          >
+        </li>
+        <!-- RSS -->
         <li class="nav__item">
           <a href="#"
             ><font-awesome-icon :icon="{ prefix: 'fas', iconName: 'rss' }" />
             RSS</a
           >
         </li>
+        <!-- About -->
         <li class="nav__item">
           <a href="#"
             ><font-awesome-icon
@@ -72,6 +90,7 @@ export default {
   .header {
     background-color: $backgroundColor;
     height: 70px;
+    box-shadow: 1px 0px 5px 1px $strokeColor;
     // タブレット以上
     @include responsive(md) {
       display: flex;
