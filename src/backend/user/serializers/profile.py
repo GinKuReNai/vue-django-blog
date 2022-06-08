@@ -6,4 +6,4 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         # 利用するモデルのフィールド
-        fields = ['website', 'twitter', 'github', 'bio']
+        fields = ['website', 'twitter', 'github', 'bio', 'thumbnail', 'background']

@@ -56,7 +56,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     nickname = models.CharField(_('nickname'), max_length=30, validators=[nickname_validator], blank=True)
     email = models.EmailField(_('email_address'), unique=True, blank=True, null=True)
     date_of_birth = models.DateField(_('date_of_birth'), blank=True)
-   
+    
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
@@ -92,6 +92,10 @@ class Profile(models.Model):
     twitter = models.URLField(blank=True)
     github = models.URLField(blank=True)
     bio = models.CharField(max_length=240, blank=True)
+
+    # Images
+    thumbnail = models.ImageField(_('thumbnail'), upload_to='thumbnail', null=True, blank=True)
+    background = models.ImageField(_('background'), upload_to='background', null=True, blank=True)
     
     def __str__(self):
         return self.user.get_username()
