@@ -9,6 +9,10 @@ import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons"
 import { faHouse, faNewspaper, faRss, faCircleInfo } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 
+// Axios
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
 // Header icons
 library.add(faHouse)
 library.add(faNewspaper)
@@ -21,5 +25,6 @@ library.add(faGithub)
 createApp(App)
     .use(router)
     .use(store)
+    .use(VueAxios, axios)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app')

@@ -18,17 +18,17 @@
       <!-- メニューリスト -->
       <ul class="nav__wrapper">
         <li class="nav__item">
-          <a href="#"
+          <router-link to="/"
             ><font-awesome-icon :icon="{ prefix: 'fas', iconName: 'house' }" />
-            Home</a
+            Home</router-link
           >
         </li>
         <li class="nav__item">
-          <a href="#"
+          <router-link to="/articles/"
             ><font-awesome-icon
               :icon="{ prefix: 'fas', iconName: 'newspaper' }"
             />
-            Articles</a
+            Articles</router-link
           >
         </li>
         <li class="nav__item">

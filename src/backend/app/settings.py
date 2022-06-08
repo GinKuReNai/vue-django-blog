@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # 3rd party apps
     'rest_framework',   # Django REST Framework
     'djoser',   # Djoser
+    'corsheaders',  # Django CORS Headers
 
     # My applications
     'blog.apps.BlogConfig',
@@ -66,6 +67,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # CORS Middleware
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -151,7 +154,7 @@ STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# REST Framwwork
+# REST Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         # JWT用ヘッダ検証パッケージ
@@ -163,3 +166,11 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('JWT',),
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),     # JWT有効期限
 }
+
+# CORS Settings
+CORS_ALLOWED_ORIGINS = (
+    'http://127.0.0.1',
+    'http://localhost',
+    'http://127.0.0.1:3000',
+    'http://localhost:3000',
+)
