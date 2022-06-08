@@ -24,15 +24,6 @@
             Home</router-link
           >
         </li>
-        <!-- Articles -->
-        <li class="nav__item">
-          <router-link to="/articles/"
-            ><font-awesome-icon
-              :icon="{ prefix: 'fas', iconName: 'newspaper' }"
-            />
-            Articles</router-link
-          >
-        </li>
         <!-- Categories -->
         <li class="nav__item">
           <router-link to="/articles/"
