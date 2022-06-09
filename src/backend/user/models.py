@@ -1,5 +1,3 @@
-from hashlib import blake2b
-from tabnanny import verbose
 import uuid
 from django.db import models
 from django.contrib.auth.models import PermissionsMixin
@@ -80,6 +78,15 @@ class User(AbstractBaseUser, PermissionsMixin):
         """メール送信"""
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
+
+def profileThumbnail_directory_path(instance, filename):
+    """サムネイル画像名をUUIDに変更して保存"""
+    return 'thumbnails/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+
+def profileBackground_directory_path(instance, filename):
+    """背景画像名をUUIDに変更して保存"""
+    return 'backgrounds/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+
 class Profile(models.Model):
     """プロフィール"""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -94,8 +101,8 @@ class Profile(models.Model):
     bio = models.CharField(max_length=240, blank=True)
 
     # Images
-    thumbnail = models.ImageField(_('thumbnail'), upload_to='thumbnail', null=True, blank=True)
-    background = models.ImageField(_('background'), upload_to='background', null=True, blank=True)
+    thumbnail = models.ImageField(_('thumbnail'), upload_to=profileThumbnail_directory_path, null=True, blank=True)
+    background = models.ImageField(_('background'), upload_to=profileBackground_directory_path, null=True, blank=True)
     
     def __str__(self):
         return self.user.get_username()
