@@ -1,5 +1,7 @@
+from . import settings
 from django.contrib import admin
 from django.urls import path, re_path, include
+from django.contrib.staticfiles.urls import static
 from django.views.generic import RedirectView
 
 urlpatterns = [
@@ -8,5 +10,7 @@ urlpatterns = [
     path('api/auth/', include('djoser.urls.jwt')),  # JWT認証(ログイン認証)
     path('api/posts/', include('blog.urls')),       # API(Posts)
     path('api/profile/', include('user.urls')),     # API(UserProfile)
-    re_path('', RedirectView.as_view(url='/')),     # トップページにリダイレクト
 ]
+
+# Media URL
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
