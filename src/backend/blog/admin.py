@@ -10,7 +10,7 @@ from blog.models.comment import Comment
 # Register your models here.
 
 class PostAdmin(admin.ModelAdmin):
-    """記事投稿用画面"""
+    """記事投稿・編集用画面"""
     # 表示項目
     list_display = ['title', 'showImage', 'created_at']
     # 検索欄
@@ -29,12 +29,30 @@ class PostAdmin(admin.ModelAdmin):
         if obj.image:
             return mark_safe('<img src="{}" style="width:100px; height:auto;">'.format(obj.image.url))
         return
+        
+class TagAdmin(admin.ModelAdmin):
+    """タグ追加・編集用画面"""
+    # 表示項目
+    list_display = ['name', 'created_at']
+    
+    fieldsets = [
+        ('タグ名', {'fields' : ['name']}),
+    ]
+
+class CategoryAdmin(admin.ModelAdmin):
+    """カテゴリー追加・編集用画面"""
+    # 表示項目
+    list_display = ['name', 'created_at']
+    
+    fieldsets = [
+        ('カテゴリー名', {'fields' : ['name']}),
+    ]
 
 
 # Tagの登録
-admin.site.register(Tag)
+admin.site.register(Tag, TagAdmin)
 # Categoryの登録
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
 # Postの登録
 admin.site.register(Post, PostAdmin)
 # Commentの登録

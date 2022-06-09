@@ -20,7 +20,7 @@ class CategoryDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     perimission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     queryset = Category.objects.all()
     serializer_class = category.CategoryCreateUpdateSerializer
-    lookup_field = 'id'
+    lookup_field = 'slug'
 
 class CategoryCreateAPIView(generics.CreateAPIView):
     """Category用登録API"""
