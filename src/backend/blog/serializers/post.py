@@ -1,6 +1,10 @@
 from rest_framework import serializers
 
-from blog.models import Tag, Post, Comment, Category
+from blog.models.tag import Tag
+from blog.models.post import Post
+from blog.models.comment import Comment
+from blog.models.category import Category
+
 from blog.serializers.tag import TagPrimaryKeyRelatedSerializer
 from blog.serializers.comment import CommentSerializer
 

@@ -4,7 +4,7 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 )
 from blog.serializers import category
-from blog.models import Category
+from blog.models.category import Category
 from blog.components.permissions import IsOwnerOrReadOnly
 
 class CategoryListAPIView(generics.ListAPIView):

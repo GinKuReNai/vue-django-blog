@@ -10,7 +10,7 @@ from blog.serializers.post import (
     PostDetailSerializer,
     PostListSerializer,
 )
-from blog.models import Post
+from blog.models.post import Post
 from blog.components.permissions import IsOwnerOrReadOnly
 from blog.components.pagination import PostLimitOffsetPagination
 

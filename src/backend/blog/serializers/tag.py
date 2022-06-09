@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from blog.models import Tag
+from blog.models.tag import Tag
 
 class TagPrimaryKeyRelatedSerializer(serializers.PrimaryKeyRelatedField, serializers.ModelSerializer):
     """ManyToMany登録用シリアライザ"""

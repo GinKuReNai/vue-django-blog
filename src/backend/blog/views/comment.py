@@ -10,7 +10,8 @@ from blog.serializers.comment import (
     CommentSerializer,
     CommentCreateUpdateSerializer,
 )
-from blog.models import Post, Comment
+from blog.models.post import Post
+from blog.models.comment import Comment
 from blog.components.permissions import IsOwnerOrReadOnly
 from blog.components.mixin import MultipleFieldLookupMixin
 

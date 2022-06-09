@@ -1,7 +1,11 @@
 import os
 from django.contrib import admin
-from blog.models import Tag, Category, Post, Comment
 from django.utils.safestring import mark_safe
+
+from blog.models.tag import Tag
+from blog.models.category import Category
+from blog.models.post import Post
+from blog.models.comment import Comment
 
 # Register your models here.
 

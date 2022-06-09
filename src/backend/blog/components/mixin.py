@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from blog.models import Post
+from blog.models.post import Post
 
 class MultipleFieldLookupMixin(object):
     """slug, idによってCommentをフィルタリング"""

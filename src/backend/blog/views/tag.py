@@ -4,7 +4,7 @@ from rest_framework.permissions import (
     IsAuthenticatedOrReadOnly,
 )
 from blog.serializers import tag
-from blog.models import Tag
+from blog.models.tag import Tag
 from blog.components.permissions import IsOwnerOrReadOnly
 
 class TagListAPIView(generics.ListAPIView):

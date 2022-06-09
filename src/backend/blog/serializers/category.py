@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from blog.models import Category
+from blog.models.category import Category
 
 class CategoryListSerializer(serializers.ModelSerializer):
     """Category一覧シリアライザ"""
