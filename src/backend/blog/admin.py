@@ -22,7 +22,9 @@ class PostAdmin(admin.ModelAdmin):
     ]
 
     def showImage(self, obj):
-        return mark_safe('<img src="{}" style="width:100px; height:auto;">'.format(obj.image.url))
+        if obj.image:
+            return mark_safe('<img src="{}" style="width:100px; height:auto;">'.format(obj.image.url))
+        return
 
 
 # Tagの登録

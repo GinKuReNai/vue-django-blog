@@ -59,7 +59,7 @@ class Post(models.Model):
     def get_api_url(self):
         """URLの設定"""
         try:
-            return reverse('posts_api', kwargs={'slug': self.slug})
+            return reverse('posts_api:detail_post', kwargs={'slug': self.slug})
         except:
             None
 
