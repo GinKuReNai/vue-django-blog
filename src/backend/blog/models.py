@@ -33,6 +33,12 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    
+def postsImage_directory_path(instance, filename):
+    """画像名をUUIDに変更して保存"""
+    return 'posts/{}.{}'.format(str(uuid.uuid4()), filename.split('.')[-1])
+
+
 class Post(models.Model):
     """記事"""
     class Meta:
@@ -45,7 +51,7 @@ class Post(models.Model):
     slug = models.SlugField('slug', unique=True)
     body = models.TextField('本文')
     meta_description = models.CharField('メタ情報', max_length=150, blank=True)
-    image = models.ImageField(upload_to='posts', blank=True, null=True)
+    image = models.ImageField(upload_to=postsImage_directory_path, blank=True, null=True)
     created_at = models.DateTimeField('作成日時', auto_now_add=True)
     updated_at = models.DateTimeField('修正日時', auto_now=True)
     

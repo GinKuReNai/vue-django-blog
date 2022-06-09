@@ -15,10 +15,10 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
     
     fieldsets = [
-        ('タイトル情報', {'fields' : ('title', 'subtitle')}),
-        ('記事', {'fields' : ('body', 'meta_description', 'image')}),
-        ('タグ・カテゴリー設定', {'fields' : ('category', 'tags')}),
-        ('作成者', {'fields' : {'author'}}),
+        ('タイトル情報', {'fields' : ['title', 'subtitle']}),
+        ('記事', {'fields' : ['body', 'meta_description', 'image']}),
+        ('タグ・カテゴリー設定', {'fields' : ['category', 'tags']}),
+        ('作成者', {'fields': ['author']})
     ]
 
     def showImage(self, obj):
