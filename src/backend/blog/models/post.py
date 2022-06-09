@@ -47,7 +47,6 @@ class Post(models.Model):
         except:
             None
 
-
 def create_slug(instance, new_slug=None):
     """slugの自動生成"""
     slug = slugify(instance.title)
