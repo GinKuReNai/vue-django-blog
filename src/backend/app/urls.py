@@ -6,6 +6,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),                                       # 管理サイト
+    path('markdownx/', include('markdownx.urls')),                         # Markdownx
     path('api/auth/', include('djoser.urls')),                             # ユーザー情報の取得など
     path('api/auth/', include('djoser.urls.jwt')),                         # JWT認証(ログイン認証)
     path('api/posts/', include('blog.urls', namespace='posts_api')),       # API(Posts)

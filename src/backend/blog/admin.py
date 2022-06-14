@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
+from markdownx.admin import MarkdownxModelAdmin
 
 from blog.models.tag import Tag
 from blog.models.category import Category
@@ -8,7 +9,7 @@ from blog.models.comment import Comment
 
 # Register your models here.
 
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(MarkdownxModelAdmin):
     """記事投稿・編集用画面"""
     # 表示項目
     list_display = ['title', 'showImage', 'created_at']

@@ -5,6 +5,7 @@ django-cors-headers==3.11.*
 djoser==2.1.*
 django-environ==0.8.*
 django-cleanup
+django-markdownx
 mysqlclient==2.1.*
 pymysql==1.0.*
 uwsgi==2.0.*

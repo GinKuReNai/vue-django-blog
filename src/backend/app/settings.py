@@ -53,8 +53,9 @@ INSTALLED_APPS = [
     
     # 3rd party apps
     'rest_framework',   # Django REST Framework
-    'djoser',   # Djoser
-    'corsheaders',  # Django CORS Headers
+    'djoser',           # Djoser
+    'corsheaders',      # Django CORS Headers
+    'markdownx',        # Markdownx
 
     # My applications
     'blog.apps.BlogConfig',
@@ -153,6 +154,13 @@ STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
 # Media files
 MEDIA_URL = '/api/media/'    # URL参照で基点となるアドレス
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    # 保存先の基点となるパス
+
+# Markdown Extensions
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.extra',    # テーブル, コードブロックをきれいに
+    'markdown.extensions.toc',      # 自動目次作成
+    'markdown.extensions.nl2br',    # Enterで改行
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

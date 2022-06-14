@@ -5,6 +5,7 @@ from django.shortcuts import reverse
 from django.db.models.signals import pre_save
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
+from markdownx.models import MarkdownxField
 
 from .tag import Tag
 from .category import Category
@@ -27,7 +28,7 @@ class Post(models.Model):
     title = models.CharField('タイトル', max_length=255, unique=True)
     subtitle = models.CharField('サブタイトル', max_length=255, blank=True)
     slug = models.SlugField('slug', unique=True)
-    body = models.TextField('本文')
+    body = MarkdownxField('本文')     # Markdown Text
     meta_description = models.CharField('メタ情報', max_length=150, blank=True)
     image = models.ImageField(upload_to=postsImage_directory_path, blank=True, null=True)
     created_at = models.DateTimeField('作成日時', auto_now_add=True)
