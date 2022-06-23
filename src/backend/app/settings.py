@@ -42,6 +42,16 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+
+     # 3rd party apps
+    'rest_framework',   # Django REST Framework
+    'djoser',           # Djoser
+    'corsheaders',      # Django CORS Headers
+    'markdownx',        # Markdownx
+    'treenode',         # TreeNode
+    'admin_interface',  # Admin Interface
+    'colorfield',       # Colorfield
+  
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,15 +61,9 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',    # django-cleanup
     'user',
     
-    # 3rd party apps
-    'rest_framework',   # Django REST Framework
-    'djoser',           # Djoser
-    'corsheaders',      # Django CORS Headers
-    'markdownx',        # Markdownx
-    'treenode',         # TreeNode
-
     # My applications
     'blog.apps.BlogConfig',
+ 
 ]
 
 MIDDLEWARE = [
