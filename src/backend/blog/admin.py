@@ -51,6 +51,16 @@ class CategoryAdmin(TreeNodeModelAdmin):
     
     form = TreeNodeForm
 
+class CommentAdmin(TreeNodeModelAdmin):
+    """コメント追加・編集用画面"""
+    # 一覧表示スタイル
+    treenode_display_mode = TreeNodeModelAdmin.TREENODE_DISPLAY_MODE_ACCORDION
+    # treenode_display_mode = TreeNodeModelAdmin.TREENODE_DISPLAY_MODE_BREADCRUMBS
+    # treenode_display_mode = TreeNodeModelAdmin.TREENODE_DISPLAY_MODE_INDENTATION
+    
+    form = TreeNodeForm
+
+
 
 # Tagの登録
 admin.site.register(Tag, TagAdmin)
@@ -59,4 +69,4 @@ admin.site.register(Category, CategoryAdmin)
 # Postの登録
 admin.site.register(Post, PostAdmin)
 # Commentの登録
-admin.site.register(Comment)
+admin.site.register(Comment, CommentAdmin)
