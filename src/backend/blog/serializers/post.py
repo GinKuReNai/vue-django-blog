@@ -49,6 +49,7 @@ class PostCreateUpdateSerializer(serializers.ModelSerializer):
 
 class PostListSerializer(serializers.ModelSerializer):
     """リスト時シリアライザ"""
+    tags = serializers.SlugRelatedField(many=True, slug_field='slug', queryset=Tag.objects.all())
     url = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField(read_only=True)
     
@@ -65,6 +66,8 @@ class PostListSerializer(serializers.ModelSerializer):
             'comments',
             'url',
             'category',
+            'created_at',
+            'updated_at',
         ]
     
     def get_comments(self, obj):
@@ -80,6 +83,7 @@ class PostListSerializer(serializers.ModelSerializer):
 class PostDetailSerializer(serializers.ModelSerializer):
     """詳細取得時シリアライザ"""
     slug = serializers.SerializerMethodField(read_only=True)
+    tags = serializers.SlugRelatedField(many=True, slug_field='slug', queryset=Tag.objects.all())
     author = serializers.PrimaryKeyRelatedField(read_only=True)
     comments = serializers.SerializerMethodField(read_only=True)
     

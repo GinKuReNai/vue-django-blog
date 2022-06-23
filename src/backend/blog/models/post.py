@@ -35,8 +35,8 @@ class Post(models.Model):
     updated_at = models.DateTimeField('修正日時', auto_now=True)
     
     author = models.ForeignKey(User, related_name='posts', on_delete=models.PROTECT)
-    tags = models.ManyToManyField(Tag, blank=True)
-    category = models.ForeignKey(Category, verbose_name='カテゴリー', related_name='category', on_delete=models.PROTECT, null=True, blank=True)
+    tags = models.ManyToManyField(Tag, related_name='posts', blank=True)
+    category = models.ForeignKey(Category, to_field='slug', verbose_name='カテゴリー', related_name='category', on_delete=models.PROTECT, null=True, blank=True)
     
     def __str__(self):
         return self.title

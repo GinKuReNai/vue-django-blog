@@ -19,7 +19,7 @@ class Category(models.Model):
 
 def create_slug(instance, new_slug=None):
     """slugの自動生成"""
-    slug = slugify(instance.title)
+    slug = slugify(instance.name)
     if new_slug is not None:
         slug = new_slug
     

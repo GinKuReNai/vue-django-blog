@@ -12,7 +12,7 @@ class TagListSerializer(serializers.ModelSerializer):
     """Tag一覧シリアライザ"""
     class Meta:
         model = Tag
-        fields = ['id', 'name', 'created_at']
+        fields = ['id', 'name', 'slug', 'created_at']
 
 class TagCreateUpdateSerializer(serializers.ModelSerializer):
     """Tag追加・更新シリアライザ"""
