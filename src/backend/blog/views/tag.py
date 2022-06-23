@@ -20,7 +20,7 @@ class TagDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     perimission_classes = [IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
     queryset = Tag.objects.all()
     serializer_class = tag.TagCreateUpdateSerializer
-    lookup_field = 'slug'
+    lookup_field = 'name'
 
 class TagCreateAPIView(generics.CreateAPIView):
     """Tag用登録API"""
