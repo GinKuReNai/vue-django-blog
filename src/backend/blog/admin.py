@@ -7,6 +7,9 @@ from blog.models.category import Category
 from blog.models.post import Post
 from blog.models.comment import Comment
 
+from treenode.admin import TreeNodeModelAdmin
+from treenode.forms import TreeNodeForm
+
 # Register your models here.
 
 class PostAdmin(MarkdownxModelAdmin):
@@ -19,7 +22,7 @@ class PostAdmin(MarkdownxModelAdmin):
     date_hierarchy = 'created_at'
     
     fieldsets = [
-        ('タイトル情報', {'fields' : ['title', 'subtitle']}),
+        ('タイトル情報', {'fields' : ['title']}),
         ('記事', {'fields' : ['body', 'meta_description', 'image']}),
         ('タグ・カテゴリー設定', {'fields' : ['category', 'tags']}),
         ('作成者', {'fields': ['author']})
@@ -39,14 +42,14 @@ class TagAdmin(admin.ModelAdmin):
         ('タグ名', {'fields' : ['name']}),
     ]
 
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TreeNodeModelAdmin):
     """カテゴリー追加・編集用画面"""
-    # 表示項目
-    list_display = ['name', 'created_at']
+    # 一覧表示スタイル
+    treenode_display_mode = TreeNodeModelAdmin.TREENODE_DISPLAY_MODE_ACCORDION
+    # treenode_display_mode = TreeNodeModelAdmin.TREENODE_DISPLAY_MODE_BREADCRUMBS
+    # treenode_display_mode = TreeNodeModelAdmin.TREENODE_DISPLAY_MODE_INDENTATION
     
-    fieldsets = [
-        ('カテゴリー名', {'fields' : ['name']}),
-    ]
+    form = TreeNodeForm
 
 
 # Tagの登録

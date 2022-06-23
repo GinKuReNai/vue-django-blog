@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'djoser',           # Djoser
     'corsheaders',      # Django CORS Headers
     'markdownx',        # Markdownx
+    'treenode',         # TreeNode
 
     # My applications
     'blog.apps.BlogConfig',
