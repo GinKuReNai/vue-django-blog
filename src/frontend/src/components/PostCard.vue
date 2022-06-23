@@ -27,8 +27,7 @@
       <!-- 記事説明 -->
       <div class="card_descriptions">
         <!-- タイトル -->
-        <h1 class="card_descriptions_title">{{ post.title }}</h1>
-        <h2 class="card_descriptions_subtitle">{{ post.subtitle }}</h2>
+        <h1 class="card_descriptions_title"><a :href="post.url">{{ post.title }}</a></h1>
         <!-- メタ情報 -->
         <div class="card_descriptions_meta">
           <p>{{ post.meta_description }}</p>

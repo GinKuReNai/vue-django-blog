@@ -20,7 +20,6 @@ class PostCreateUpdateSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'title',
-            'subtitle',
             'body',
             'author',
             'meta_description',
@@ -58,7 +57,6 @@ class PostListSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'title',
-            'subtitle',
             'image',
             'author',
             'meta_description',
@@ -92,7 +90,6 @@ class PostDetailSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'title',
-            'subtitle',
             'slug',
             'body',
             'meta_description',
