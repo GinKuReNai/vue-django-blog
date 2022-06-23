@@ -1,6 +1,7 @@
 # Whole settings
 .env
 .devcontainer/devcontainer.json
+static
 
 # Backend
 src/backend/.env
