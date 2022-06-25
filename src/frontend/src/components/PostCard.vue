@@ -40,14 +40,14 @@
     </div>
     <!-- 日時 -->
     <ul class="card_date">
-        <li>
-          <font-awesome-icon :icon="{ prefix: 'fas', iconName: 'pen' }" />
-          {{ dateFilter(post.created_at) + '投稿' }}
-        </li>
-        <li>
-          <font-awesome-icon :icon="{ prefix: 'fas', iconName: 'file-pen' }" />
-          {{ dateFilter(post.updated_at) + '更新' }}
-        </li>
+      <li>
+        <font-awesome-icon :icon="{ prefix: 'fas', iconName: 'pen' }" />
+        {{ dateFilter(post.created_at) + "投稿" }}
+      </li>
+      <li>
+        <font-awesome-icon :icon="{ prefix: 'fas', iconName: 'file-pen' }" />
+        {{ dateFilter(post.updated_at) + "更新" }}
+      </li>
     </ul>
   </div>
 </template>
@@ -60,12 +60,13 @@ export default {
       default: null,
     },
   },
-  
+
   methods: {
+    // 日時を日本語表記に変更
     dateFilter(date) {
-      let pattern = /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}).*/;
-      let result = pattern.exec(date);
-      let toJapanese = `${result[1]}年${result[2]}月${result[3]}日`;
+      const pattern = /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}).*/;
+      const result = pattern.exec(date);
+      const toJapanese = `${result[1]}年${result[2]}月${result[3]}日`;
 
       return toJapanese;
     },
@@ -89,7 +90,7 @@ export default {
     margin-right: 2rem;
     position: relative;
     overflow: hidden;
-    
+
     @include responsive(md) {
       &:hover {
         box-shadow: 0 3px 7px -3px $highlightColor;
@@ -100,7 +101,7 @@ export default {
       height: 200px;
       overflow: hidden;
       transition: transform 0.4s;
-      
+
       // タブレット以上でホバーを有効
       @include responsive(md) {
         &:hover {
@@ -215,14 +216,14 @@ export default {
         }
       }
     }
-    
+
     &_descriptions {
       &_title {
         a {
           color: $headlineColor;
           text-decoration: none;
-          font-size: 0.8em; 
-          
+          font-size: 0.8em;
+
           @include responsive(md) {
             &:hover {
               color: rgb(102, 102, 102);
@@ -230,7 +231,7 @@ export default {
           }
         }
       }
-        
+
       &_comments {
         text-align: left;
         p {
@@ -241,10 +242,10 @@ export default {
         }
       }
     }
-    
+
     &_date {
       list-style: none;
-      
+
       @include responsive(md) {
         display: flex;
         justify-content: flex-end;

@@ -12,7 +12,7 @@ from blog.serializers.post import (
 )
 from blog.models.post import Post
 from blog.components.permissions import IsOwnerOrReadOnly
-from blog.components.pagination import PostLimitOffsetPagination
+from blog.components.pagination import PostPageNumberPagination
 
 class PostListAPIView(generics.ListAPIView):
     """Post用取得（一覧）API"""
@@ -21,7 +21,7 @@ class PostListAPIView(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostListSerializer
     # Paginationを設定
-    pagination_class = PostLimitOffsetPagination
+    pagination_class = PostPageNumberPagination
     
 class PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     """Post用詳細取得・更新・削除API"""
