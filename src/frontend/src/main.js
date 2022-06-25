@@ -13,6 +13,9 @@ import {
     faTags,
     faRss,
     faCircleInfo,
+    faPen,
+    faFilePen,
+    faComments,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 
@@ -30,6 +33,10 @@ library.add(faCircleInfo)
 // Footer icons
 library.add(faTwitter)
 library.add(faGithub)
+// PostCard icons
+library.add(faComments)
+library.add(faPen)
+library.add(faFilePen)
 
 createApp(App)
     .use(router)

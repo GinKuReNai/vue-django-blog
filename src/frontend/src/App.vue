@@ -24,10 +24,17 @@ import GlobalFooter from "./components/GlobalFooter.vue";
   text-align: center;
   color: #2c3e50;
   margin-top: 0px;
+  
+  // Responsible Font size
+  font-size: calc(80% + 0.25vw);
 
   GlobalFooter {
     position: absolute;
     bottom: 0;
+  }
+  
+  h1 {
+    font-size: 2em;
   }
 }
 </style>

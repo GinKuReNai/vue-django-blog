@@ -5,7 +5,7 @@
       <p class="description">Software Engineer Tech Blog</p>
     </div>
     <div class="home_content">
-      <div class="home_inner">
+      <div class="home_content_inner">
         <!-- 記事カードを表示 -->
         <div class="post-card" v-for="value in posts" :key="value.id">
           <PostCard :post="value" />
@@ -42,4 +42,17 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import "../assets/styles/responsive";
+
+@include responsive(md) {
+  .home {
+    &_content {
+      &_inner {
+        width: 700px;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+</style>
