@@ -11,51 +11,51 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Paginate from 'vuejs-paginate-next'
-
+import axios from "axios";
+import Paginate from "vuejs-paginate-next";
 
 export default {
-    props: {
-        totalPageNumber: {
-            required: false,
-        }
+  props: {
+    totalPageNumber: {
+      required: false,
     },
+  },
 
-    components: {
-        paginate: Paginate,
+  components: {
+    paginate: Paginate,
+  },
+
+  methods: {
+    // 任意ページの記事一覧を取得
+    async fetchPostWithNumber(pageNum) {
+      await axios
+        .get(`http://localhost/api/posts/?page=${pageNum}`)
+        .then((response) => {
+          this.$store.commit("setPosts", response.data);
+        })
+        .catch((error) => {
+          console.log("axiosGetErr", error);
+        });
     },
-    
-    methods: {
-        // 任意ページの記事一覧を取得
-        async fetchPostWithNumber(pageNum) {
-          await axios.get(`http://localhost/api/posts/?page=${pageNum}`)
-          .then((response) => {
-            this.$store.commit('setPosts', response.data)
-          })
-          .catch((error) => {
-            console.log('axiosGetErr', error)
-          })
-        },
-    },
-}
+  },
+};
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 @import "../assets/styles/responsive";
 @import "../assets/styles/ease";
 @import "../assets/styles/basecolor";
 
 // 共通スタイル
 @include responsive(xs) {
- .pagination {
+  .pagination {
     position: relative;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,0%);
+    transform: translate(-50%, 0%);
     margin: 0;
     padding: 10px;
-    background-color: #fff;
+    background-color: $secondaryColor;
     // border-radius: 40px;
     // box-shadow: 0 5px 25px 0 rgba(0,0,0,.5);
 
@@ -66,22 +66,25 @@ export default {
 
     .page-link {
       display: block;
-      width: 40px;
-      height: 40px;
-      line-height: 40px;
+      font-weight: bold;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
       background-color: #fff;
       text-align: center;
       text-decoration: none;
-      color: #252525;
+      color: $paragraphColor;
       border-radius: 4px;
       margin: 5px;
-      box-shadow: inset 0 5px 10px rgba(0,0,0,.1), 0 2px 5px rgba(0,0,0,.5);
-      transition: all .2s ease;
+      border: 3px $buttonColor solid;
+      transition: all 0.2s ease;
 
-      &:hover,
-      &.active {
-        color: #fff;
-        background-color: $tertiaryColor;
+      @include responsive(md) {
+        &:hover,
+        &.active {
+          color: $secondaryColor;
+          background-color: $buttonColor;
+        }
       }
     }
   }
