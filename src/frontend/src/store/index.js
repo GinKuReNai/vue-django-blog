@@ -58,6 +58,10 @@ export default createStore({
             return state.posts.current_page
         },
 
+        postTotalPageNumber(state) {
+            return state.posts.total_pages
+        },
+
         postCount(state) {
             return state.posts.count
         },

@@ -23,6 +23,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+import Paginate from 'vuejs-paginate-next'
+
 // Header icons
 library.add(faHouse)
 library.add(faNewspaper)
@@ -42,5 +44,6 @@ createApp(App)
     .use(router)
     .use(store)
     .use(VueAxios, axios)
+    .use(Paginate)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app')
