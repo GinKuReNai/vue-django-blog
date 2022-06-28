@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'treenode',         # TreeNode
     'admin_interface',  # Admin Interface
     'colorfield',       # Colorfield
+    'imagekit',         # ImageKit
   
     'django.contrib.admin',
     'django.contrib.auth',
@@ -187,8 +188,6 @@ SIMPLE_JWT = {
 
 # CORS Settings
 CORS_ALLOWED_ORIGINS = (
-    'http://127.0.0.1',
-    'http://localhost',
     'http://127.0.0.1:3000',
     'http://localhost:3000',
 )

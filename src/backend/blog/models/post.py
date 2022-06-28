@@ -6,6 +6,8 @@ from django.db.models.signals import pre_save
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 from markdownx.models import MarkdownxField
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 
 from .tag import Tag
 from .category import Category
@@ -29,7 +31,14 @@ class Post(models.Model):
     slug = models.SlugField('slug', unique=True)
     body = MarkdownxField('本文')     # Markdown Text
     meta_description = models.CharField('メタ情報', max_length=150, blank=True)
-    image = models.ImageField(upload_to=postsImage_directory_path, blank=True, null=True)
+
+    image = ProcessedImageField(upload_to=postsImage_directory_path,
+                                       processors=[ResizeToFill(1200, 675)],
+                                       format='WEBP',
+                                       options={'quality': 60},
+                                       blank=True, 
+                                       null=True)
+
     created_at = models.DateTimeField('作成日時', auto_now_add=True)
     updated_at = models.DateTimeField('修正日時', auto_now=True)
     
@@ -41,7 +50,7 @@ class Post(models.Model):
         return self.title
     
     def get_api_url(self):
-        """URLの設定"""
+        """記事URLの設定"""
         try:
             return reverse('posts_api:detail_post', kwargs={'slug': self.slug})
         except:

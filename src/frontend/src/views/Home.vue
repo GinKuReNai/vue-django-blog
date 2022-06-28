@@ -11,12 +11,10 @@
         <PostCard :post="value" />
       </div>
     </section>
-    <!-- ページ内カード数の表示 -->
-    <div class="home_lead">
-      <p>{{ postCount }}件中 {{ postRangeFirst }}～{{ postRangeLast }}件を一覧表示</p>
-    </div>
-    <!-- ページ遷移ナビゲーション -->
     <nav class="home_nav">
+      <!-- ページ内カード数の表示 -->
+      <p>{{ postCount }}件中 {{ postRangeFirst }}～{{ postRangeLast }}件を一覧表示</p>
+      <!-- ページ遷移ナビゲーション -->
       <PaginationNav :totalPageNumber="Number(postTotalPageNumber)" />
     </nav>
   </main>
@@ -70,13 +68,27 @@ export default {
 
 @include responsive(md) {
   .home {
+    background-color: rgb(255, 227, 227);
     &_description {
+      background-color: $secondaryColor;
       height: 100px;
+      border-bottom: 1px $strokeColor solid;
     } 
 
     &_content {
+      background-color: $secondaryColor;
       width: 700px;
       margin: 0 auto;
+      padding: 1px;
+      border-radius: 6px;
+      
+      @include responsive(md) {
+        position: relative;
+      }
+    }
+    
+    &_nav {
+      background-color: $secondaryColor;
     }
   }
 }

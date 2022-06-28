@@ -7,6 +7,8 @@ from django.utils import timezone
 from django.contrib.auth.validators import ASCIIUsernameValidator, UnicodeUsernameValidator
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 
 # Create your models here.
 class UserManager(BaseUserManager):
@@ -101,8 +103,19 @@ class Profile(models.Model):
     bio = models.CharField(max_length=240, blank=True)
 
     # Images
-    thumbnail = models.ImageField(_('thumbnail'), upload_to=profileThumbnail_directory_path, null=True, blank=True)
-    background = models.ImageField(_('background'), upload_to=profileBackground_directory_path, null=True, blank=True)
+    thumbnail = ProcessedImageField(upload_to=profileThumbnail_directory_path,
+                                    processors=[ResizeToFill(500, 500)],
+                                    format='WEBP',
+                                    options={'quality': 60},
+                                    null=True,
+                                    blank=True)
+
+    background = ProcessedImageField(upload_to=profileBackground_directory_path,
+                                     processors=[ResizeToFill(1200, 675)],
+                                     format='WEBP',
+                                     options={'quality': 60},
+                                     null=True,
+                                     blank=True)
     
     def __str__(self):
         return self.user.get_username()

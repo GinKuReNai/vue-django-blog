@@ -25,7 +25,7 @@
     <div class="card_descriptions">
       <!-- タイトル -->
       <h1 class="card_descriptions_title">
-        <a :href="post.url">{{ post.title }}</a>
+        <a :href="post.post_url">{{ post.title }}</a>
       </h1>
       <!-- メタ情報 -->
       <div class="card_descriptions_meta">
@@ -98,9 +98,25 @@ export default {
     }
 
     &_photo {
-      height: 200px;
+      // 画面のリサイズ
+      width: 326px;
+      height: 182.25px;
+      @include responsive(md) {
+        width: 634px;
+        height: 356.63px;
+      }
       overflow: hidden;
       transition: transform 0.4s;
+      
+      // 画像のりサイズ
+      img {
+        width: 326px;
+        height: 182.25px;
+        @include responsive(md) {
+          width: 634px;
+          height: 356.63px;
+        }
+      }
 
       // タブレット以上でホバーを有効
       @include responsive(md) {

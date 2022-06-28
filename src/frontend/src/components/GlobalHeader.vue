@@ -81,7 +81,7 @@ export default {
   .header {
     background-color: $backgroundColor;
     height: 70px;
-    box-shadow: 1px 0px 5px 1px $strokeColor;
+    border-bottom: 1px $strokeColor solid;
     // タブレット以上
     @include responsive(md) {
       display: flex;

@@ -49,7 +49,7 @@ class PostCreateUpdateSerializer(serializers.ModelSerializer):
 class PostListSerializer(serializers.ModelSerializer):
     """リスト時シリアライザ"""
     tags = serializers.SlugRelatedField(many=True, slug_field='name', queryset=Tag.objects.all())
-    url = serializers.SerializerMethodField()
+    post_url = serializers.SerializerMethodField()
     comments = serializers.SerializerMethodField(read_only=True)
     
     class Meta:
@@ -62,7 +62,7 @@ class PostListSerializer(serializers.ModelSerializer):
             'meta_description',
             'tags',
             'comments',
-            'url',
+            'post_url',
             'category',
             'created_at',
             'updated_at',
@@ -73,8 +73,8 @@ class PostListSerializer(serializers.ModelSerializer):
         qs = Comment.objects.filter(post=obj).count()
         return qs
 
-    def get_url(self, obj):
-        """URLを出力"""
+    def get_post_url(self, obj):
+        """記事URLを出力"""
         return obj.get_api_url()
 
     

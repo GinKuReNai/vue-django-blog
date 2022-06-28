@@ -8,6 +8,7 @@ django-cleanup
 django-markdownx
 django-treenode
 django-admin-interface
+django-imagekit
 mysqlclient==2.1.*
 pymysql==1.0.*
 uwsgi==2.0.*
