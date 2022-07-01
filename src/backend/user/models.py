@@ -97,10 +97,12 @@ class Profile(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.PROTECT,
     )
+    display_name = models.CharField(max_length=25, blank=True)
     website = models.URLField(blank=True)
     twitter = models.URLField(blank=True)
     github = models.URLField(blank=True)
-    bio = models.CharField(max_length=240, blank=True)
+    linkedin = models.URLField(blank=True)
+    bio = models.TextField(max_length=240, blank=True)
 
     # Images
     thumbnail = ProcessedImageField(upload_to=profileThumbnail_directory_path,

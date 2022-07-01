@@ -4,17 +4,35 @@ import axios from 'axios'
 export default createStore({
     state: {
         // Axiosで取得した記事データ
-        posts: {}
+        posts: {},
+        profile: {},
+        tags: {},
+        categories: {},
     },
     mutations: {
         // この関数を仲介させてstate.postsを変更
         setPosts(state, responseData) {
             state.posts = responseData
-        }
+        },
+        
+        // この関数を仲介させてstate.profileを変更
+        setProfile(state, responseData) {
+            state.profile = responseData
+        },
+
+        // この関数を仲介させてstate.tagsを変更
+        setTags(state, responseData) {
+            state.tags = responseData
+        },
+        
+        // この関数を仲介させてstate.tagsを変更
+        setCategories(state, responseData) {
+            state.categories = responseData
+        },
     },
     actions: {
         // 非同期処理でAxiosにより記事一覧を取得
-        async fetchPostsAction(context) {
+        async fetchPosts(context) {
             await axios.get('http://localhost/api/posts/')
             .then((response) => {
                 context.commit('setPosts', response.data)
@@ -22,14 +40,48 @@ export default createStore({
             .catch((error) => {
                 console.log('axiosGetErr', error)
             })
-        }
+        },
 
+        // 非同期処理でAxiosによりプロフィールを取得
+        async fetchProfile(context) {
+            await axios.get('http://localhost/api/profile/')
+            .then((response) => {
+                console.log(response.data)
+                context.commit('setProfile', response.data)
+            })
+            .catch((error) => {
+                console.log('axiosGetErr', error)
+            })
+        },
+
+        // 非同期処理でAxiosによりタグ一覧を取得
+        async fetchTags(context) {
+            await axios.get('http://localhost/api/posts/tag/')
+            .then((response) => {
+                context.commit('setTags', response.data)
+            })
+            .catch((error) => {
+                console.log('axiosGetErr', error)
+            })
+        },
+        
+        // 非同期処理でAxiosによりカテゴリー一覧を取得
+        async fetchCategories(context) {
+            await axios.get('http://localhost/api/posts/category/')
+            .then((response) => {
+                context.commit('setCategories', response.data)
+            })
+            .catch((error) => {
+                console.log('axiosGetErr', error)
+            })
+        },
+       
     },
     modules: {
 
     },
     getters: {
-        // postsからPaginationの各種情報を取得
+        // state.postsからPaginationの各種情報を取得
         getPreviousURL(state) {
             return state.posts.previous
         },
@@ -68,6 +120,21 @@ export default createStore({
 
         postList(state) {
             return state.posts.results
+        },
+        
+        // state.profileからプロフィール情報を取得
+        getProfileList(state) {
+            return state.profile
+        },
+        
+        // state.tagsからタグ一覧を取得
+        getTagList(state) {
+            return state.tags
+        },
+
+        // state.categoriesからカテゴリー一覧を取得
+        getCategoryList(state) {
+            return state.categories
         },
     }
 })

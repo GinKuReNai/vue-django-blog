@@ -98,30 +98,18 @@ export default {
     }
 
     &_photo {
-      // 画面のリサイズ
-      width: 326px;
-      height: 182.25px;
-      @include responsive(md) {
-        width: 634px;
-        height: 356.63px;
-      }
-      overflow: hidden;
-      transition: transform 0.4s;
-      
       // 画像のりサイズ
+      overflow: hidden;
       img {
-        width: 326px;
-        height: 182.25px;
-        @include responsive(md) {
-          width: 634px;
-          height: 356.63px;
-        }
-      }
+        width: 100%;
+        height: auto;
+        transition: transform 0.4s;
 
-      // タブレット以上でホバーを有効
-      @include responsive(md) {
-        &:hover {
-          transform: scale(1.1, 1.1);
+        // タブレット以上でホバーを有効
+        @include responsive(md) {
+          &:hover {
+            transform: scale(1.1, 1.1);
+          }
         }
       }
     }

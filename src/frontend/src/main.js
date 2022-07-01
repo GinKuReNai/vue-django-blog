@@ -5,7 +5,11 @@ import store from './store'
 
 // Fontawesome Icons
 import { library } from "@fortawesome/fontawesome-svg-core"
-import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons"
+import {
+    faTwitter,
+    faGithub,
+    faLinkedin,
+} from "@fortawesome/free-brands-svg-icons"
 import {
     faHouse,
     faNewspaper,
@@ -16,6 +20,7 @@ import {
     faPen,
     faFilePen,
     faComments,
+    faEarthAsia,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 
@@ -39,6 +44,9 @@ library.add(faGithub)
 library.add(faComments)
 library.add(faPen)
 library.add(faFilePen)
+// Side Bar icons
+library.add(faEarthAsia)
+library.add(faLinkedin)
 
 createApp(App)
     .use(router)
