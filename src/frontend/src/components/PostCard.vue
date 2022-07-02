@@ -13,13 +13,11 @@
         <a href="#">{{ post.category }}</a>
       </div>
       <!-- タグ -->
-      <div class="card_details_tags">
-        <ul>
+      <ul class="card_details_tags">
           <li v-for="(tag, index) in post.tags" :key="index">
             <a href="#">{{ tag }}</a>
           </li>
-        </ul>
-      </div>
+      </ul>
     </div>
     <!-- 記事説明 -->
     <div class="card_descriptions">
@@ -153,7 +151,6 @@ export default {
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
-        align-items: center;
 
         list-style: none;
         margin: 0;

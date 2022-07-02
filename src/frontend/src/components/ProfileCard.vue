@@ -107,7 +107,7 @@ export default {
     }
 
     &_name {
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 600;
       margin-bottom: 10px;
     }
@@ -117,7 +117,7 @@ export default {
       display: flex;
       justify-content: space-around;
       padding: 1rem;
-      margin: 10px;
+      margin: 20px;
       border: 1px solid gray;
       border-radius: 20px;
     }

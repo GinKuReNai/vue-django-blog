@@ -106,6 +106,10 @@ export default {
       background-color: $secondaryColor;
       height: 100px;
       border-bottom: 1px $strokeColor solid;
+      // タイトルと説明を中央揃え
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     
     &_content {
