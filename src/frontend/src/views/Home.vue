@@ -1,5 +1,5 @@
 <template>
-  <main class="home">
+  <main class="home" id="home">
     <!-- タイトル / 説明 -->
     <div class="home_description">
       <h1>Title</h1>
@@ -8,74 +8,83 @@
     <!-- 記事一覧 -->
     <section class="home_content">
       <!-- 記事カードを表示 -->
-      <div class="post-card" v-for="value in postList" :key="value.id">
+      <div class="home_content_card" v-for="value in postList" :key="value.id">
         <PostCard :post="value" />
+      </div>
+      <!-- サイドバー -->
+      <div class="home_content_sidebar">
+        <ProfileCard :profiles="getProfileList" />
+        <TagListCard :tags="getTagList" />
+        <CategoryListCard :categories="getCategoryList" />
       </div>
     </section>
     <!-- ページネーション -->
-    <nav class="home_nav">
+    <nav class="home_nav" id="nav">
       <!-- ページ内カード数の表示 -->
-      <p>{{ postCount }}件中 {{ postRangeFirst }}～{{ postRangeLast }}件を一覧表示</p>
+      <p>
+        {{ postCount }}件中 {{ postRangeFirst }}～{{
+          postRangeLast
+        }}件を一覧表示
+      </p>
       <!-- ページ遷移ナビゲーション -->
       <PaginationNav :totalPageNumber="Number(postTotalPageNumber)" />
     </nav>
-    <!-- サイドバー -->
-    <section class="home_sidebar">
-      <Sidebar :profiles="getProfileList" :tags="getTagList" :categories="getCategoryList" />
-    </section>
   </main>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from "vuex";
 
 import PostCard from "../components/PostCard.vue";
-import PaginationNav from "../components/PaginationNav.vue"
-import Sidebar from "../components/Sidebar.vue"
+import PaginationNav from "../components/PaginationNav.vue";
+import ProfileCard from "../components/ProfileCard.vue"
+import TagListCard from "../components/TagListCard.vue"
+import CategoryListCard from "../components/CategoryListCard.vue"
 
 export default {
-
   components: {
     PostCard,
     PaginationNav,
-    Sidebar,
-  },
+    ProfileCard,
+    TagListCard,
+    CategoryListCard,
+},
 
   computed: {
     // Responseの各種情報を取得するゲッター
     ...mapGetters([
-      'postList',
-      'postCount',
-      'postRangeFirst',
-      'postRangeLast',
-      'postCurrentPageNumber',
-      'postTotalPageNumber',
-      'hasPrevious',
-      'hasNext',
-      'getPreviousURL',
-      'getNextURL',
-      'getProfileList',
-      'getTagList',
-      'getCategoryList',
+      "postList",
+      "postCount",
+      "postRangeFirst",
+      "postRangeLast",
+      "postCurrentPageNumber",
+      "postTotalPageNumber",
+      "hasPrevious",
+      "hasNext",
+      "getPreviousURL",
+      "getNextURL",
+      "getProfileList",
+      "getTagList",
+      "getCategoryList",
     ]),
   },
 
   methods: {
     ...mapActions([
-      'fetchPosts',
-      'fetchProfile',
-      'fetchTags',
-      'fetchCategories',
+      "fetchPosts",
+      "fetchProfile",
+      "fetchTags",
+      "fetchCategories",
     ]),
   },
 
   mounted() {
     // ページ読み込みの初めに1ページ目の記事一覧を取得
-    this.$store.dispatch('fetchPosts')
+    this.$store.dispatch("fetchPosts");
     // サイドバーにプロフィール・タグ・カテゴリーのデータを渡す
-    this.$store.dispatch('fetchProfile')
-    this.$store.dispatch('fetchTags')
-    this.$store.dispatch('fetchCategories')
+    this.$store.dispatch("fetchProfile");
+    this.$store.dispatch("fetchTags");
+    this.$store.dispatch("fetchCategories");
   },
 };
 </script>
@@ -85,25 +94,41 @@ export default {
 @import "../assets/styles/ease";
 @import "../assets/styles/basecolor";
 
-
-@include responsive(md) {
+// 共通スタイル
+@include responsive(xs) {
+  
   .home {
-    background-color: rgb(255, 227, 227);
+    // タブレット以上で背景を設定
+    @include responsive(md) {
+      background-color: rgb(255, 227, 227);
+    }
     &_description {
       background-color: $secondaryColor;
       height: 100px;
       border-bottom: 1px $strokeColor solid;
-    } 
-
-    &_content, &_sidebar {
-      background-color: $secondaryColor;
-      width: 700px;
-      margin: 0 auto;
-      padding: 1px;
-      border-radius: 6px;
-      
+    }
+    
+    &_content {
       @include responsive(md) {
-        position: relative;
+        display: flex;
+        justify-content: center;
+        background-color: rgb(255, 227, 227);
+      }
+      
+      &_card {
+        background-color: $secondaryColor;
+        @include responsive(md) {
+          width: 700px;
+          margin-right: 50px;
+        }
+      }
+      
+      &_sidebar {
+        // モバイル時は非表示
+        @media screen and (max-width: 767px) {
+          display: none;
+        }
+        width: 400px;
       }
     }
     

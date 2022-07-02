@@ -46,7 +46,6 @@ export default createStore({
         async fetchProfile(context) {
             await axios.get('http://localhost/api/profile/')
             .then((response) => {
-                console.log(response.data)
                 context.commit('setProfile', response.data)
             })
             .catch((error) => {
@@ -58,6 +57,7 @@ export default createStore({
         async fetchTags(context) {
             await axios.get('http://localhost/api/posts/tag/')
             .then((response) => {
+                console.log(response.data)
                 context.commit('setTags', response.data)
             })
             .catch((error) => {
