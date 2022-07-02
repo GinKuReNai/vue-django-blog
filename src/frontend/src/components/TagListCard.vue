@@ -1,6 +1,9 @@
 <template>
 <div class="tags">
-    <p>タグ一覧({{ tags.length }})</p>
+    <p>
+      <font-awesome-icon :icon="{ prefix: 'fas', iconName: 'tags' }" />
+      タグ一覧({{ tags.length }})
+    </p>
     <ul>
         <li v-for="(tag, value) in tags" :key="value">
             <a href="#">{{ tag.name }}</a>
@@ -44,6 +47,7 @@ export default {
     
     p {
         margin: 10px auto;
+        font-weight: bold;
     }
 
     /*========= タグのためのCSS ===============*/

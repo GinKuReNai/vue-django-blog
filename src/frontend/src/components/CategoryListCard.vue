@@ -1,8 +1,15 @@
 <template>
     <!-- カテゴリー -->
-    <ul class="categories">
-        <li v-for="(category, value) in categories" :key="value">{{ category.name }}</li>
-    </ul>
+    <div class="categories">
+        <p>
+            <font-awesome-icon :icon="{ prefix: 'fas', iconName: 'folder' }" />
+            カテゴリー
+        </p>
+        <ul>
+            <li v-for="(category, value) in categories" :key="value">{{ category.name }}</li>
+        </ul>
+       
+    </div>
 </template>
 
 <script>
@@ -28,5 +35,11 @@ export default {
     position: relative;
     overflow: hidden;
     background-color: $secondaryColor;
+    
+    p {
+        margin: 10px auto;
+        font-weight: bold;
+    }
+   
 }
 </style>
