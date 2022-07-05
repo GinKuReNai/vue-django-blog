@@ -1,7 +1,7 @@
 from rest_framework import generics, pagination, response
 
 class PostPageNumberPagination(pagination.PageNumberPagination):
-    page_size = 5
+    page_size = 10
     
     # 返却するJSON要素を独自に拡張
     def get_paginated_response(self, data):

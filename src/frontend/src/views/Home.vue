@@ -1,5 +1,5 @@
 <template>
-  <main class="home" id="home">
+  <main class="home">
     <!-- タイトル / 説明 -->
     <div class="home_description">
       <h1>Title</h1>
@@ -8,8 +8,8 @@
     <!-- 記事一覧 -->
     <section class="home_content">
       <!-- 記事カードを表示 -->
-      <div class="home_content_card" v-for="value in postList" :key="value.id">
-        <PostCard :post="value" />
+      <div class="home_content_card">
+        <PostCard v-for="value in postList" :post="value" :key="value.id" />
       </div>
       <!-- サイドバー -->
       <div class="home_content_sidebar">
@@ -19,7 +19,7 @@
       </div>
     </section>
     <!-- ページネーション -->
-    <nav class="home_nav" id="nav">
+    <nav class="home_nav">
       <!-- ページ内カード数の表示 -->
       <p>
         {{ postCount }}件中 {{ postRangeFirst }}～{{

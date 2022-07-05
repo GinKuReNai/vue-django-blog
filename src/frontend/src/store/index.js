@@ -69,6 +69,7 @@ export default createStore({
         async fetchCategories(context) {
             await axios.get('http://localhost/api/posts/category/')
             .then((response) => {
+                console.log(response.data)
                 context.commit('setCategories', response.data)
             })
             .catch((error) => {
