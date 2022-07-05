@@ -58,6 +58,7 @@ class PostListSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'image',
+            'slug',
             'author',
             'meta_description',
             'tags',

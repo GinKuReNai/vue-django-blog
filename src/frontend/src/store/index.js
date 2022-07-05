@@ -32,7 +32,7 @@ export default createStore({
     },
     actions: {
         // 非同期処理でAxiosにより記事一覧を取得
-        async fetchPosts(context) {
+        async fetchPostsList(context) {
             await axios.get('http://localhost/api/posts/')
             .then((response) => {
                 context.commit('setPosts', response.data)

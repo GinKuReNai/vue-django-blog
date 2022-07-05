@@ -102,7 +102,7 @@ export default {
             
             .child_category {
                 // 子カテゴリーは右にずらす
-                margin: 0 0 0 35px;
+                margin: 7px 0 7px 35px;
             }
         }
     }

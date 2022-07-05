@@ -71,7 +71,7 @@ export default {
 
   methods: {
     ...mapActions([
-      "fetchPosts",
+      "fetchPostsList",
       "fetchProfile",
       "fetchTags",
       "fetchCategories",
@@ -80,7 +80,7 @@ export default {
 
   mounted() {
     // ページ読み込みの初めに1ページ目の記事一覧を取得
-    this.$store.dispatch("fetchPosts");
+    this.$store.dispatch("fetchPostsList");
     // サイドバーにプロフィール・タグ・カテゴリーのデータを渡す
     this.$store.dispatch("fetchProfile");
     this.$store.dispatch("fetchTags");

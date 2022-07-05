@@ -2,9 +2,9 @@
   <div class="card">
     <!-- 画像部分 -->
     <div class="card_photo">
-      <a href="#">
+      <router-link :to="{name: 'post_detail', params: {slug: post.slug}}">
         <img :src="post.image" alt="" />
-      </a>
+      </router-link>
     </div>
     <!-- 詳細情報 -->
     <div class="card_details">
@@ -23,7 +23,7 @@
     <div class="card_descriptions">
       <!-- タイトル -->
       <h1 class="card_descriptions_title">
-        <a :href="post.post_url">{{ post.title }}</a>
+        <router-link :to="{name: 'post_detail', params: {slug: post.slug}}">{{ post.title }}</router-link>
       </h1>
       <!-- メタ情報 -->
       <div class="card_descriptions_meta">
