@@ -1,3 +1,6 @@
+#Copyright (c) 2022 Akito Koga
+#This software is released under the MIT License, see LICENSE.
+
 """
 Django settings for config project.
 
