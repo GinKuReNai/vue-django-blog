@@ -30,7 +30,9 @@ This is an SPI blog developed using Vue and Django. This blog is developed using
 
 # Requirement
 
-This application is developed using [Docker](https://www.docker.com/); Windows or Mac users should install Docker Desktop. Click [here](https://docs.docker.com/engine/install/) for installation instructions.
+This application is developed using [Docker](https://www.docker.com/); Windows or Mac users should install Docker Desktop.
+
+Click [here](https://docs.docker.com/engine/install/) for installation instructions.
 
 # Installation
 
@@ -39,31 +41,31 @@ This application is developed using [Docker](https://www.docker.com/); Windows o
 git clone https://github.com/GinKuReNai/vue-django-blog.git
 ```
 
-1. Change directory and make docker image:
+2. Change directory and make docker image:
 ```
 cd vue-django-blog
 docker compose build
 ```
 
-1. Deploy Vue:
+3. Deploy Vue:
 ```
 docker compose run frontend npm run build
 ```
 
-1. Start docker containers:
+4. Start docker containers:
 ```
 docker compose down
 docker compose up -d
 ```
 
-1. Move to the backend container and perform ORM migration:
+5. Move to the backend container and perform ORM migration:
 ```
 docker compose exec backend bash
 python3 manage.py makemigrations
 python3 manage.py migrate
 ```
 
-1. Collect static files in the backend container:
+6. Collect static files in the backend container:
 ```
 python3 manage.py collectstatic.
 ```
@@ -79,17 +81,25 @@ create database blog_data character set utf8;
 # Usage
 
 - Home
+
 [http://localhost/](http://localhost/)
+
 - Development Server
+
 [http://localhost:3000/](http://localhost:3000/)
+
 Access to hot reloading to check changes as they occur.
 
 - Admin Site (Django)
+
 [http://localhost/admin/](http://localhost/admin/)
+
 Access this page to use the blog's administration screen to post and edit articles, add tags and categories, etc.
 
 - REST Api
+
 [http://localhost/api/](http://localhost/api/)
+
 Access the API to check the input/output of JSON format objects or to check the REST functionality of the API.
 
 # Note
