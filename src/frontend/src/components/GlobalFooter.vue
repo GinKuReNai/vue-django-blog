@@ -46,6 +46,7 @@ export default {};
     display: flex;
     background-color: $backgroundColor;
     justify-content: center;
+    text-align: center;
     height: 130px;
 
     .footer-icons {
@@ -88,6 +89,7 @@ export default {};
   .license {
     p {
       font-size: 0.8em;
+      text-align: center;
     }
   }
 }

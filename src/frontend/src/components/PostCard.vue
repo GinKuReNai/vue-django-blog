@@ -232,6 +232,10 @@ export default {
           }
         }
       }
+      
+      &_meta {
+        text-align: center;
+      }
 
       &_comments {
         text-align: left;

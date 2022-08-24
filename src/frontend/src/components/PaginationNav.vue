@@ -56,8 +56,7 @@ export default {
     margin: 0;
     padding: 10px;
     background-color: $secondaryColor;
-    // border-radius: 40px;
-    // box-shadow: 0 5px 25px 0 rgba(0,0,0,.5);
+    text-align: center;
 
     .page-item {
       display: inline-block;

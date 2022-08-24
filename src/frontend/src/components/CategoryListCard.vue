@@ -49,6 +49,7 @@ export default {
     p {
         margin: 10px auto;
         font-weight: bold;
+        text-align: center;
     }
     
     ol {

@@ -82,6 +82,7 @@ export default {
     position: relative;
     overflow: hidden;
     background-color: $secondaryColor;
+    text-align: center;
 
 
     &_background {

@@ -44,6 +44,7 @@ export default {
     list-style: none;
     overflow: hidden;
     padding: 0;
+    text-align: center;
     
     p {
         margin: 10px auto;

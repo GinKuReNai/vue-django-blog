@@ -98,6 +98,7 @@ export default {
 @include responsive(xs) {
   
   .home {
+    // text-align: center;
     // タブレット以上で背景を設定
     @include responsive(md) {
       background-color: rgb(255, 227, 227);
@@ -106,6 +107,7 @@ export default {
       background-color: $secondaryColor;
       height: 100px;
       border-bottom: 1px $strokeColor solid;
+      text-align: center;
       // タイトルと説明を中央揃え
       display: flex;
       flex-direction: column;
@@ -138,6 +140,10 @@ export default {
     
     &_nav {
       background-color: $secondaryColor;
+
+      p {
+        text-align: center;
+      }
     }
   }
 }
