@@ -10,6 +10,7 @@ django-treenode
 django-admin-interface
 django-imagekit
 mysqlclient==2.1.*
+markdown
 pymysql==1.0.*
 uwsgi==2.0.*
 pillow>=8.0

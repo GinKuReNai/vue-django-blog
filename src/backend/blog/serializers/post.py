@@ -1,3 +1,4 @@
+import markdown
 from rest_framework import serializers
 
 from blog.models.tag import Tag
@@ -85,6 +86,7 @@ class PostDetailSerializer(serializers.ModelSerializer):
     tags = serializers.SlugRelatedField(many=True, slug_field='name', queryset=Tag.objects.all())
     author = serializers.PrimaryKeyRelatedField(read_only=True)
     comments = serializers.SerializerMethodField(read_only=True)
+    body = serializers.SerializerMethodField(read_only=True)
     
     class Meta:
         model = Post
@@ -115,3 +117,7 @@ class PostDetailSerializer(serializers.ModelSerializer):
         except Exception as e:
             print(e)
         return serializer.data
+
+    def get_body(self, obj):
+        """Markdown形式をHTML形式に変換"""
+        return markdown.markdown(obj.body, extensions=['markdown.extensions.toc'])

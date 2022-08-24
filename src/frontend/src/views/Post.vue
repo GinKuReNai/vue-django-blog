@@ -1,11 +1,7 @@
 <template>
   <main class="post">
-    <h1></h1>
-    <article>
-      <h2></h2>
-      <p></p>
-      <h2></h2>
-      <p></p>
+    <h1>{{ data.title }}</h1>
+    <article v-html="data.body">
     </article>
   </main>
 </template>
@@ -17,6 +13,7 @@ export default {
   data() {
     return {
         slug: this.$route.params.slug,
+        data: {},
     };
   },
 
@@ -24,6 +21,7 @@ export default {
       // 記事の詳細をAPIから取得
       axios.get(`http://localhost/api/posts/${this.slug}/`)
       .then((response) => {
+          this.data = response.data
           console.log(response.data)
       })
       .catch((error) => {
