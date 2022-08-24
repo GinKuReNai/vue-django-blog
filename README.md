@@ -6,7 +6,7 @@ This is an SPI blog developed using Vue and Django. This blog is developed using
 
    ## Configration Diagram
 
-  ![ConfigrationDiagram](configration_diagram.png)
+  ![ConfigrationDiagram](image/configration_diagram.png)
 
   ## Description
 
@@ -96,11 +96,27 @@ Access to hot reloading to check changes as they occur.
 
 Access this page to use the blog's administration screen to post and edit articles, add tags and categories, etc.
 
+1. Move to the backend container and Create superuser:
+```
+docker compose exec backend bash
+python3 manage.py createsuperuser
+```
+
+2. Follow the instructions to enter your information.
+
+3. Access to [here](http://localhost/admin/) and login to the admin site.
+
+4. You can post articles, add tags, and perform other blog operations from the administration screen.
+
+![AdminSite](image/adminsite.png)
+
 - REST Api
 
 [http://localhost/api/](http://localhost/api/)
 
 Access the API to check the input/output of JSON format objects or to check the REST functionality of the API.
+
+![PostsApi](image/posts_api.png)
 
 # Note
 
