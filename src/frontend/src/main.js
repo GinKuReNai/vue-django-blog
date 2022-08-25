@@ -27,8 +27,10 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome"
 // Axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
+// Pagination
 import Paginate from 'vuejs-paginate-next'
+// v-html sanitizer
+import Vue3Sanitize from 'vue-3-sanitize'
 
 // Header icons
 library.add(faHouse)
@@ -53,5 +55,6 @@ createApp(App)
     .use(store)
     .use(VueAxios, axios)
     .use(Paginate)
+    .use(Vue3Sanitize)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app')
