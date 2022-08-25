@@ -32,6 +32,15 @@ import Paginate from 'vuejs-paginate-next'
 // v-html sanitizer
 import Vue3Sanitize from 'vue-3-sanitize'
 
+// sanitizer Settings
+const overridenOptions = {
+    allowedAttributes: {
+        'div': ['class', 'id'],
+        'p': ['class', 'id'],
+        'ul': ['class', 'id'],
+    },
+}
+
 // Header icons
 library.add(faHouse)
 library.add(faNewspaper)
@@ -55,6 +64,6 @@ createApp(App)
     .use(store)
     .use(VueAxios, axios)
     .use(Paginate)
-    .use(Vue3Sanitize)
+    .use(Vue3Sanitize, overridenOptions)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app')

@@ -120,4 +120,12 @@ class PostDetailSerializer(serializers.ModelSerializer):
 
     def get_body(self, obj):
         """Markdown形式をHTML形式に変換"""
-        return markdown.markdown(obj.body, extensions=['markdown.extensions.toc'])
+        return markdown.markdown(
+            obj.body,
+            extensions=[
+                'markdown.extensions.toc',
+                'markdown.extensions.extra',
+                'markdown.extensions.admonition',
+                'markdown.extensions.sane_lists',
+            ],
+        )
